@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux 卸载的那些事, rudy&#39;s blog">
-    <meta name="description" content="Linux卸载应用系列">
+    <meta name="keywords" content="Linux卸载安装, rudy&#39;s blog">
+    <meta name="description" content="Linux的命令安装卸载">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
 
     
 
-    <title>Linux 卸载的那些事 | rudy&#39;s blog</title>
+    <title>Linux卸载安装 | rudy&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -378,12 +378,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux 卸载的那些事</h1>
+                    <h1 class="description center-align post-title">Linux卸载安装</h1>
                 </div>
             </div>
         </div>
@@ -503,19 +503,14 @@
                                 <span class="chip bg-color">Linux</span>
                             </a>
                         
+                            <a href="/tags/BSD/">
+                                <span class="chip bg-color">BSD</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%AF%87/" class="post-category">
-                                基础篇
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -524,14 +519,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-24
+                    2022-04-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-24
+                    2022-05-02
                 </div>
                 
 
@@ -570,17 +565,13 @@
             <div id="articleContent">
                 <h2 id="linux-卸载系列"><a href="#linux-卸载系列" class="headerlink" title="linux 卸载系列"></a>linux 卸载系列</h2><h4 id="mysql卸载"><a href="#mysql卸载" class="headerlink" title="mysql卸载"></a>mysql卸载</h4><ul>
 <li><p>查看是否有安装mysql</p>
-</li>
-<li><p>[root@192 lib]# rpm -qa|grep -i mysql</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rpm -qa|grep -i mysql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>mysql57-community-release-el7-9.noarch<br>mysql-community-libs-5.7.37-1.el7.x86_64<br>mysql-community-common-5.7.37-1.el7.x86_64<br>mysql-community-server-5.7.37-1.el7.x86_64<br>mysql-community-client-5.7.37-1.el7.x86_64</p>
 </blockquote>
 </li>
 <li><p>停止mysql服务</p>
-<ul>
-<li><code>[root@192 lib]# systemctl stop mysqld</code></li>
-</ul>
-</li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># systemctl stop mysqld</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>开始删除mysql</p>
 <ul>
 <li>删除列表中的第一个就可以了<pre class="line-numbers language-none"><code class="language-none">[root@192 lib]# rpm -ev mysql57-community-release-el7-9.noarch --nodeps
@@ -614,23 +605,18 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
 <li><p>删除之前旧版本mysql安装目录</p>
 <ul>
 <li>先查看mysql目录</li>
-<li>再依次删除<pre class="line-numbers language-none"><code class="language-none">find / -name mysql
+<li>再依次删除<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> / -name mysql
 
-[root@192 lib]# rm -rf /var/lib/mysql
-[root@192 lib]# rm -rf /var/lib/mysql/mysql
-[root@192 lib]# rm -rf /usr/lib64/mysql
-[root@192 lib]# rm -rf /usr/share/mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /var/lib/mysql</span>
+<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /var/lib/mysql/mysql</span>
+<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /usr/lib64/mysql</span>
+<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /usr/share/mysql</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 </li>
 <li><p>卸载后/etc/my.cnf不会删除，需要进行手工删除</p>
-<ul>
-<li>[root@192 lib]# rm -rf /etc/my.cnf</li>
-</ul>
-</li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /etc/my.cnf</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>再次检查是否删除干净</p>
-</li>
-<li><p>[root@192 lib]# rpm -qa|grep -i mysql</p>
-</li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rpm -qa|grep -i mysql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>mysql安装推荐阿里云官方文档 安装示例</p>
 <ul>
 <li>nginx卸载<ul>
@@ -670,7 +656,7 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://FacturyValue.github.io/2022/04/24/Linux%20%E5%8D%B8%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B-linux-uninstall/">https://FacturyValue.github.io/2022/04/24/Linux%20%E5%8D%B8%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B-linux-uninstall/</a>
+                    <a href="https://FacturyValue.github.io/2022/04/28/linux/Linux%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">https://FacturyValue.github.io/2022/04/28/linux/Linux%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -710,6 +696,10 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
                             
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/BSD/">
+                                    <span class="chip bg-color">BSD</span>
                                 </a>
                             
                         </div>
@@ -887,33 +877,29 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/24/Maven%E5%85%A5%E9%97%A8%E5%92%8C%E4%BD%BF%E7%94%A8-maven-basic/">
+                <a href="/2022/04/28/linux/Linux%E5%91%BD%E4%BB%A4%E5%9F%BA%E7%A1%80%E7%AF%87/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Maven入门和使用">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Linux命令基础篇">
                         
-                        <span class="card-title">Maven入门和使用</span>
+                        <span class="card-title">Linux命令基础篇</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Maven的基础使用
+                            Linux基础命令
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Maven%E5%85%A5%E9%97%A8%E7%AF%87/" class="post-category">
-                                    Maven入门篇
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            rudy
                             
                         </span>
                     </div>
@@ -921,12 +907,8 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Maven/">
-                        <span class="chip bg-color">Maven</span>
-                    </a>
-                    
-                    <a href="/tags/Apache/">
-                        <span class="chip bg-color">Apache</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -940,31 +922,31 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/24/JVM%E7%9B%91%E6%8E%A7%E5%88%A9%E5%99%A8%E4%B9%8BJprofiler-jvm-jprofiler/">
+                <a href="/2022/04/27/%E5%85%AC%E5%AE%89%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF-beian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JVM监控利器之Jprofiler">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="公安备案信息">
                         
-                        <span class="card-title">JVM监控利器之Jprofiler</span>
+                        <span class="card-title">公安备案信息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JProfiler使用
+                            腾讯云网站备案以及联网备案
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JVM/" class="post-category">
-                                    JVM
+                            <a href="/categories/Security/" class="post-category">
+                                    Security
                                 </a>
                             
                             
@@ -974,12 +956,8 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
-                    <a href="/tags/Jprofiler/">
-                        <span class="chip bg-color">Jprofiler</span>
+                    <a href="/tags/Security/">
+                        <span class="chip bg-color">Security</span>
                     </a>
                     
                 </div>
@@ -1170,7 +1148,7 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.1k</span>
+                        class="white-color">52.9k</span>
             
             
             

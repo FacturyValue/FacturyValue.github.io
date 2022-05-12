@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux常用命令-快速篇, rudy&#39;s blog">
-    <meta name="description" content="Linux命令篇">
+    <meta name="keywords" content="Linux命令基础篇, rudy&#39;s blog">
+    <meta name="description" content="Linux基础命令">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
 
     
 
-    <title>Linux常用命令-快速篇 | rudy&#39;s blog</title>
+    <title>Linux命令基础篇 | rudy&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -378,12 +378,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux常用命令-快速篇</h1>
+                    <h1 class="description center-align post-title">Linux命令基础篇</h1>
                 </div>
             </div>
         </div>
@@ -499,23 +499,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%AF%87/" class="post-category">
-                                基础篇
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -524,28 +515,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-22
+                    2022-04-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-22
+                    2022-05-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    37
+                    687
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -568,32 +559,69 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h3 id="服务器搭建命令"><a href="#服务器搭建命令" class="headerlink" title="服务器搭建命令"></a>服务器搭建命令</h3><ul>
-<li> tar </li>
-<li> ls</li>
-<li> df</li>
-<li> netstat</li>
-<li> firewalld</li>
-<li> mv</li>
-<li> cp</li>
-<li> touch</li>
-<li> vi</li>
-<li> echo</li>
-<li> grep</li>
-<li> ps</li>
-<li> lsof</li>
-<li> yum</li>
-<li> rz</li>
-<li> systemctl</li>
-<li> top</li>
-<li> cat</li>
-<li> more</li>
-<li> less</li>
-<li> man</li>
-<li> iptables</li>
-<li> kill</li>
-<li> rm</li>
-<li> mkdir </li>
+                <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><h4 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h4><h4 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h4><ul>
+<li>tar命令<ul>
+<li>-c: 建立压缩档案</li>
+<li>-x：解压</li>
+<li>-t：查看内容</li>
+<li>-r：向压缩归档文件末尾追加文件</li>
+<li>-u：更新原压缩包中的文件</li>
+<li>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。</li>
+<li>-z：有gzip属性的</li>
+<li>-j：有bz2属性的</li>
+<li>-Z：有compress属性的</li>
+<li>-v：显示所有过程</li>
+<li>-O：将文件解开到标准输出</li>
+<li>下面的参数-f是必须的</li>
+<li>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。<h4 id="tar-cf-all-tar-jpg"><a href="#tar-cf-all-tar-jpg" class="headerlink" title="tar -cf all.tar *.jpg"></a>tar -cf all.tar *.jpg</h4></li>
+</ul>
+</li>
+<li>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。<h4 id="tar-rf-all-tar-gif"><a href="#tar-rf-all-tar-gif" class="headerlink" title="tar -rf all.tar *.gif"></a>tar -rf all.tar *.gif</h4></li>
+<li>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。<h4 id="tar-uf-all-tar-logo-gif"><a href="#tar-uf-all-tar-logo-gif" class="headerlink" title="tar -uf all.tar logo.gif"></a>tar -uf all.tar logo.gif</h4></li>
+<li>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。<h4 id="tar-tf-all-tar"><a href="#tar-tf-all-tar" class="headerlink" title="tar -tf all.tar"></a>tar -tf all.tar</h4></li>
+<li>这条命令是列出all.tar包中所有文件，-t是列出文件的意思<h4 id="tar-xf-all-tar"><a href="#tar-xf-all-tar" class="headerlink" title="tar -xf all.tar"></a>tar -xf all.tar</h4></li>
+<li>这条命令是解出all.tar包中所有文件，-x是解开的意思<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><ul>
+<li>tar –cvf jpg.tar *.jpg //将目录里所有jpg文件打包成tar.jpg</li>
+<li>tar –czf jpg.tar.gz *.jpg //将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz</li>
+<li>tar –cjf jpg.tar.bz2 *.jpg //将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2</li>
+<li>tar –cZf jpg.tar.Z *.jpg //将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z</li>
+<li>rar a jpg.rar *.jpg //rar格式的压缩，需要先下载rar for linux</li>
+<li>zip jpg.zip *.jpg //zip格式的压缩，需要先下载zip for linux</li>
+</ul>
+</li>
+<li>解压<ul>
+<li>tar –xvf file.tar //解压 tar包</li>
+<li>tar -xzvf file.tar.gz //解压tar.gz</li>
+<li>tar -xjvf file.tar.bz2 //解压 tar.bz2</li>
+<li>tar –xZvf file.tar.Z //解压tar.Z</li>
+<li>unrar e file.rar //解压rar</li>
+<li>unzip file.zip //解压zip<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2></li>
+</ul>
+</li>
+<li>1、*.tar 用 tar –xvf 解压</li>
+<li>2、*.gz 用 gzip -d或者gunzip 解压</li>
+<li>3、*.tar.gz和*.tgz 用 tar –xzf 解压</li>
+<li>4、*.bz2 用 bzip2 -d或者用bunzip2 解压</li>
+<li>5、*.tar.bz2用tar –xjf 解压</li>
+<li>6、*.Z 用 uncompress 解压</li>
+<li>7、*.tar.Z 用tar –xZf 解压</li>
+<li>8、*.rar 用 unrar e解压</li>
+<li>9、*.zip 用 unzip 解压<h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2></li>
+</ul>
+<ul>
+<li>mv</li>
+<li>cp</li>
+<li>apt-get</li>
+<li>tail</li>
+<li>head</li>
+<li>cat</li>
+<li>man</li>
+<li>less</li>
+<li>more</li>
+<li>wc</li>
+<li>ps aux</li>
+<li>top</li>
+<li>netstat</li>
 </ul>
 
                 
@@ -621,7 +649,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://FacturyValue.github.io/2022/04/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%BF%AB%E9%80%9F%E7%AF%87-linux-chang-yong-ming-ling---kuai-su-pian/">https://FacturyValue.github.io/2022/04/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%BF%AB%E9%80%9F%E7%AF%87-linux-chang-yong-ming-ling---kuai-su-pian/</a>
+                    <a href="https://FacturyValue.github.io/2022/04/28/linux/Linux%E5%91%BD%E4%BB%A4%E5%9F%BA%E7%A1%80%E7%AF%87/">https://FacturyValue.github.io/2022/04/28/linux/Linux%E5%91%BD%E4%BB%A4%E5%9F%BA%E7%A1%80%E7%AF%87/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -659,8 +687,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
                                 </a>
                             
                         </div>
@@ -838,36 +866,48 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/22/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA-ge-ren-wang-zhan-da-jian/">
+                <a href="/2022/04/28/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%B0%B1%E6%98%AF%E8%BF%99%E4%B9%88%E9%85%B7%E7%82%AB-hexo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="个人网站搭建">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="使用Hexo搭建博客就是这么酷炫">
                         
-                        <span class="card-title">个人网站搭建</span>
+                        <span class="card-title">使用Hexo搭建博客就是这么酷炫</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            网站搭建
+                            静态网站
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AF%87/" class="post-category">
-                                    服务器篇
+                            <a href="/categories/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/" class="post-category">
+                                    静态网站
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -879,33 +919,29 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/20/Vim%E4%BA%94%E5%88%86%E9%92%9F%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%AD%A6%E8%B5%B7%E6%9D%A5-vim%E5%85%A5%E9%97%A8/">
+                <a href="/2022/04/28/linux/Linux%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Vim五分钟就可以学起来">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux卸载安装">
                         
-                        <span class="card-title">Vim五分钟就可以学起来</span>
+                        <span class="card-title">Linux卸载安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            VIM的入门篇
+                            Linux的命令安装卸载
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/" class="post-category">
-                                    工具篇
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            rudy
                             
                         </span>
                     </div>
@@ -913,12 +949,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/toolkit/">
-                        <span class="chip bg-color">toolkit</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/vim/">
-                        <span class="chip bg-color">vim</span>
+                    <a href="/tags/BSD/">
+                        <span class="chip bg-color">BSD</span>
                     </a>
                     
                 </div>
@@ -1109,7 +1145,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.1k</span>
+                        class="white-color">52.9k</span>
             
             
             
