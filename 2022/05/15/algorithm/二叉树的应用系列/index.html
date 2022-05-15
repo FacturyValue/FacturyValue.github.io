@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="网络协议学习笔记-02, rudy&#39;s blog">
-    <meta name="description" content="交换机与VLAN">
+    <meta name="keywords" content="二叉树的应用系列, rudy&#39;s blog">
+    <meta name="description" content="玩转二叉树之应用">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
 
     
 
-    <title>网络协议学习笔记-02 | rudy&#39;s blog</title>
+    <title>二叉树的应用系列 | rudy&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -378,12 +378,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">网络协议学习笔记-02</h1>
+                    <h1 class="description center-align post-title">二叉树的应用系列</h1>
                 </div>
             </div>
         </div>
@@ -499,8 +499,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/network/">
-                                <span class="chip bg-color">network</span>
+                            <a href="/tags/algorithm/">
+                                <span class="chip bg-color">algorithm</span>
+                            </a>
+                        
+                            <a href="/tags/binarytree/">
+                                <span class="chip bg-color">binarytree</span>
                             </a>
                         
                     </div>
@@ -511,8 +515,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-category">
-                                网络协议
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AF%87/" class="post-category">
+                                算法篇
                             </a>
                         
                     </div>
@@ -524,28 +528,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    0202-05-09
+                    2022-05-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-10
+                    2022-05-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    543
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    3 分
                 </div>
                 
 
@@ -568,92 +572,210 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="交换机与VLAN"><a href="#交换机与VLAN" class="headerlink" title="交换机与VLAN"></a>交换机与VLAN</h1><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><blockquote>
-<p>宿舍只需要一台交换机就可以组建一个局域网,如果变成办公室,多台交换机如何连接多个局域网？</p>
-</blockquote>
-<ul>
-<li>拓扑结构<ul>
-<li>如下图所示：两台交换机三个局域网的案例</li>
+                <h1 id="二叉树应用"><a href="#二叉树应用" class="headerlink" title="二叉树应用"></a>二叉树应用</h1><h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><ul>
+<li>Tree-Min-Value</li>
 </ul>
-</li>
-</ul>
-<img src="https://javacoldly.xyz/upload/2022/05/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%8B%93%E6%89%91%E5%9B%BE.webp" alt="交换机拓扑图" style="zoom: 33%;">
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// n = # nodes</span>
+<span class="token comment">// time  : O(n)</span>
+<span class="token comment">// space : O(n)</span>
+<span class="token comment">// brute force</span>
+<span class="token comment">// deepth-deep-search</span>
+<span class="token comment">/*const treeMinValues = (root) =&gt; {
+  let minValue= Infinity;
+  const stack = [root];
+  while (stack.length &gt; 0){
+      const current = stack.pop();
+      if (current.val &lt; minValue)
+          minValue = current.val;
+      if (current.left !== null){
+          stack.push(current.left);
+      }
+
+      if (current.right !== null){
+          stack.push(current.right);
+      }
+  }
+
+  return minValue;
+}*/</span>
+<span class="token comment">// breadth-deep-search</span>
+<span class="token comment">/*const treeMinValues = (root) =&gt; {
+    let minValue= Infinity;
+    const stack = [root];
+    while (stack.length &gt; 0){
+        const current = stack.shift();
+        if (current.val &lt; minValue)
+            minValue = current.val;
+        if (current.left !== null){
+            stack.push(current.left);
+        }
+
+        if (current.right !== null){
+            stack.push(current.right);
+        }
+    }
+
+    return minValue;
+}*/</span>
+<span class="token comment">// deepth-deep-search &amp;&amp; recrusive</span>
+<span class="token keyword">const</span> <span class="token function-variable function">treeMinValues</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">root</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span>  <span class="token number">Infinity</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> leftMin <span class="token operator">=</span> <span class="token function">treeMinValues</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> rightMin <span class="token operator">=</span> <span class="token function">treeMinValues</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val<span class="token punctuation">,</span>leftMin<span class="token punctuation">,</span>rightMin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">53</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> f <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">34</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+a<span class="token punctuation">.</span>left <span class="token operator">=</span> b<span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>right <span class="token operator">=</span> c<span class="token punctuation">;</span>
+b<span class="token punctuation">.</span>left <span class="token operator">=</span> d<span class="token punctuation">;</span>
+b<span class="token punctuation">.</span>right <span class="token operator">=</span> e<span class="token punctuation">;</span>
+c<span class="token punctuation">.</span>right <span class="token operator">=</span> f<span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">treeMinValues</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//-34</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
 <ul>
-<li>说明</li>
+<li>Tree-Sum-Value</li>
 </ul>
-<blockquote>
-<p>当机器 2 要访问机器 1 的时候，机器 2 并不知道机器 1 的 MAC 地址，所以机器 2 会发送一个数据包请求。这个广播消息会到达机器 1，也同时会到达交换机 A。这个时候交换机 A 已经知道机器 1 是不可能在右边的网口的，所以这个广播信息就不会广播到局域网二和局域网三。</p>
-</blockquote>
-<h1 id="如何解决常见的环路问题？"><a href="#如何解决常见的环路问题？" class="headerlink" title="如何解决常见的环路问题？"></a>如何解决常见的环路问题？</h1><ul>
-<li>问题介绍</li>
-</ul>
-<img src="https://javacoldly.xyz/upload/2022/05/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%8E%AF%E8%B7%AF.webp" alt="image" style="zoom:67%;">
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// n = # nodes</span>
+<span class="token comment">// time  : O(n)</span>
+<span class="token comment">// space : O(n)</span>
+<span class="token comment">// brute force</span>
+<span class="token comment">/*const treeSumValues = (root) =&gt; {
+    // base case
+    if (root === null) return 0;
+    // recrusive call
+    return root.val +treeSumValues(root.left) + treeSumValues(root.right);
+};*/</span>
+<span class="token comment">// recrusive way 1th</span>
+<span class="token comment">/*const treeSumValues = (root) =&gt; {
+    // base case
+    if (root === null) return 0;
+    // recrusive call
+    let totalSum = root.val;
+    const queue = [root];
+    while (queue.length &gt; 0) {
+        const current = queue.shift();
+        if (current.left !== null) {
+            queue.push(current.left);
+            totalSum += current.left.val;
+        }
+        if (current.right !== null) {
+            queue.push(current.right);
+            totalSum += current.right.val;
+        }
+    }
 
-<blockquote>
-<p>我们来想象一下机器 1 访问机器 2 的过程。一开始，机器 1 并不知道机器 2 的 MAC 地址，所以它需要发起一个 ARP 的广播。广播到达机器 2，机器 2 会把 MAC 地址返回来，看起来没有这两个交换机什么事情。</p>
-<p>但是问题来了，这两个交换机还是都能够收到广播包的。交换机 A 一开始是不知道机器 2 在哪个局域网的，所以它会把广播消息放到局域网二，在局域网二广播的时候，交换机 B 右边这个网口也是能够收到广播消息的。交换机 B 会将这个广播信息发送到局域网一。局域网一的这个广播消息，又会到达交换机 A 左边的这个接口。交换机 A 这个时候还是不知道机器 2 在哪个局域网，于是将广播包又转发到局域网二。左转左转左转，好像是个圈哦。</p>
-<p>可能有人会说，当两台交换机都能够逐渐学习到拓扑结构之后，是不是就可以了？别想了，压根儿学不会的。</p>
-<p>机器 1 的广播包到达交换机 A 和交换机 B 的时候，本来两个交换机都学会了机器 1 是在局域网一的，但是当交换机 A 将包广播到局域网二之后，交换机 B 右边的网口收到了来自交换机 A 的广播包。根据学习机制，这彻底损坏了交换机 B 的三观，刚才机器 1 还在左边的网口呢，怎么又出现在右边的网口呢？哦，那肯定是机器 1 换位置了，于是就误会了，交换机 B 就学会了，机器 1 是从右边这个网口来的，把刚才学习的那一条清理掉。同理，交换机 A 右边的网口，也能收到交换机 B 转发过来的广播包，同样也误会了，于是也学会了，机器 1 从右边的网口来，不是从左边的网口来。</p>
-<p>然而当广播包从左边的局域网一广播的时候，两个交换机再次刷新三观，原来机器 1 是在左边的，过一会儿，又发现不对，是在右边的，过一会，又发现不对，是在左边的。</p>
-<p>这还是一个包转来转去，每台机器都会发广播包，交换机转发也会复制广播包，当广播包越来越多的时候，按照上一节讲过一个共享道路的算法，也就是路会越来越堵，最后谁也别想走。所以，必须有一个方法解决环路的问题，怎么破除环路呢？</p>
-</blockquote>
+    return totalSum;
+};*/</span>
+<span class="token comment">// recrusive method 2th</span>
+<span class="token comment">// best practive</span>
+<span class="token keyword">const</span> <span class="token function-variable function">treeSumValues</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">root</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// base case</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// recrusive call</span>
+    <span class="token comment">// let totalSum = root.val;</span>
+    <span class="token keyword">let</span> totalSum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> queue <span class="token operator">=</span> <span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> current <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        totalSum <span class="token operator">+=</span> current<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span>left <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span>right <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> totalSum<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> f <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">34</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+a<span class="token punctuation">.</span>left <span class="token operator">=</span> b<span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>right <span class="token operator">=</span> c<span class="token punctuation">;</span>
+b<span class="token punctuation">.</span>left <span class="token operator">=</span> d<span class="token punctuation">;</span>
+b<span class="token punctuation">.</span>right <span class="token operator">=</span> e<span class="token punctuation">;</span>
+c<span class="token punctuation">.</span>right <span class="token operator">=</span> f<span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">treeSumValues</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//3</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <ul>
-<li>解决方法<ul>
-<li>STP协议</li>
+<li>Max-Path-Sum</li>
 </ul>
-</li>
-</ul>
-<blockquote>
-<p>在数据结构中，有一个方法叫做最小生成树。有环的我们常称为图。将图中的环破了，就生成了树。在计算机网络中，生成树的算法叫作 STP，全称 Spanning Tree Protocol。</p>
-</blockquote>
-<img src="https://javacoldly.xyz/upload/2022/05/47baa69073b38357e0ae3f88ff74dd23.webp" alt="47baa69073b38357e0ae3f88ff74dd23" style="zoom: 25%;">
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// n = # nodes</span>
+<span class="token comment">// time  : O(n)</span>
+<span class="token comment">// space : O(n)</span>
+<span class="token keyword">const</span> <span class="token function-variable function">maxPathSum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">root</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">Infinity</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> root<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
 
-<h1 id="STP-协议中那些难以理解的概念"><a href="#STP-协议中那些难以理解的概念" class="headerlink" title="STP 协议中那些难以理解的概念"></a>STP 协议中那些难以理解的概念</h1><ul>
-<li><strong>Root Bridge</strong>，也就是根交换机。这个比较容易理解，可以比喻为“掌门”交换机，是某棵树的老大，是掌门，最大的大哥。</li>
-<li><strong>Designated Bridges</strong>，有的翻译为指定交换机。这个比较难理解，可以想像成一个“小弟”，对于树来说，就是一棵树的树枝。所谓“指定”的意思是，我拜谁做大哥，其他交换机通过这个交换机到达根交换机，也就相当于拜他做了大哥。这里注意是树枝，不是叶子，因为叶子往往是主机。</li>
-<li><strong>Bridge Protocol Data Units</strong> （BPDU） ，网桥协议数据单元。可以比喻为“相互比较实力”的协议。行走江湖，比的就是武功，拼的就是实力。当两个交换机碰见的时候，也就是相连的时候，就需要互相比一比内力了。BPDU 只有掌门能发，已经隶属于某个掌门的交换机只能传达掌门的指示。</li>
-<li><strong>Priority Vector</strong>，优先级向量。可以比喻为实力 （值越小越牛）。实力是啥？就是一组 ID 数目，[Root Bridge ID, Root Path Cost, Bridge ID, and Port ID]。为什么这样设计呢？这是因为要看怎么来比实力。先看 Root Bridge ID。拿出老大的 ID 看看，发现掌门一样，那就是师兄弟；再比 Root Path Cost，也即我距离我的老大的距离，也就是拿和掌门关系比，看同一个门派内谁和老大关系铁；最后比 Bridge ID，比我自己的 ID，拿自己的本事比。</li>
-</ul>
-<h1 id="如何解决广播问题和安全问题？"><a href="#如何解决广播问题和安全问题？" class="headerlink" title="如何解决广播问题和安全问题？"></a>如何解决广播问题和安全问题？</h1><ul>
-<li>物理隔离<ul>
-<li>每个单独的交换机之间沟通需要路由器来解决</li>
-</ul>
-</li>
-<li>虚拟隔离(==VLAN==)</li>
-</ul>
-<blockquote>
-<p>交换机怎么区分哪个机器属于哪个局域网呢？</p>
-</blockquote>
-<img src="https://javacoldly.xyz//upload/2022/05/ba720f6988558f95c381f4deaab11660.webp" alt="ba720f6988558f95c381f4deaab11660" style="zoom:33%;">
+    <span class="token keyword">const</span> maxChild <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>
+        <span class="token function">maxPathSum</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">maxPathSum</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">return</span> root<span class="token punctuation">.</span>val <span class="token operator">+</span> maxChild<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//ADT</span>
 
-<ul>
-<li>我们只需要在原来的二层的头上加一个 TAG，里面有一个 VLAN ID，一共 12 位。为什么是 12 位呢？因为 12 位可以划分 4096 个 VLAN。</li>
-<li>交换机工作方式</li>
-</ul>
-<blockquote>
-<p>交换机把二层的头取下来的时候，就能够识别这个 VLAN ID。这样只有相同 VLAN 的包，才会互相转发，不同 VLAN 的包，是看不到的。</p>
-<p>工作机制如下图所示：</p>
-</blockquote>
-<img src="https://javacoldly.xyz//upload/2022/05/5c207a6e2c1c9881823b04e648f4ba4a.webp" alt="5c207a6e2c1c9881823b04e648f4ba4a" style="zoom:33%;">
+<span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<ul>
-<li>交换机之间是如何连接的？<ul>
-<li>对于支持 VLAN 的交换机，有一种口叫作 Trunk 口。它可以转发属于任何 VLAN 的口。交换机之间可以通过这种口相互连接。</li>
-</ul>
-</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>当交换机的数目越来越多的时候，会遭遇环路问题，让网络包迷路，这就需要使用 STP 协议，通过华山论剑比武的方式，将有环路的图变成没有环路的树，从而解决环路问题。</li>
-<li>交换机数目多会面临隔离问题，可以通过 VLAN 形成虚拟局域网，从而解决广播问题和安全问题。</li>
-</ul>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul>
-<li>STP 协议能够很好地解决环路问题，但是也有它的缺点，你能举几个例子吗？</li>
-<li>在一个比较大的网络中，如果两台机器不通，你知道应该用什么方式调试吗？<ul>
-<li>ping</li>
-</ul>
-</li>
-</ul>
+<span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">53</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> f <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">34</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+a<span class="token punctuation">.</span>left <span class="token operator">=</span> b<span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>right <span class="token operator">=</span> c<span class="token punctuation">;</span>
+b<span class="token punctuation">.</span>left <span class="token operator">=</span> d<span class="token punctuation">;</span>
+b<span class="token punctuation">.</span>right <span class="token operator">=</span> e<span class="token punctuation">;</span>
+c<span class="token punctuation">.</span>right <span class="token operator">=</span> f<span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">maxPathSum</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//81</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -680,7 +802,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://FacturyValue.github.io/0202/05/09/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_02/">https://FacturyValue.github.io/0202/05/09/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_02/</a>
+                    <a href="https://FacturyValue.github.io/2022/05/15/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E5%88%97/">https://FacturyValue.github.io/2022/05/15/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E5%88%97/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -718,8 +840,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/network/">
-                                    <span class="chip bg-color">network</span>
+                                <a href="/tags/algorithm/">
+                                    <span class="chip bg-color">algorithm</span>
+                                </a>
+                            
+                                <a href="/tags/binarytree/">
+                                    <span class="chip bg-color">binarytree</span>
                                 </a>
                             
                         </div>
@@ -893,84 +1019,36 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/0202/05/09/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_03/">
+                <a href="/2022/05/15/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8%E7%B3%BB%E5%88%97/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="网络协议学习笔记-02">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="二叉树的应用系列">
                         
-                        <span class="card-title">网络协议学习笔记-02</span>
+                        <span class="card-title">二叉树的应用系列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ICMP与ping
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>0202-05-09
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-category">
-                                    网络协议
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/network/">
-                        <span class="chip bg-color">network</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/0202/05/09/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_02/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="网络协议学习笔记-02">
-                        
-                        <span class="card-title">网络协议学习笔记-02</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            交换机与VLAN
+                            玩转二叉树之应用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>0202-05-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-category">
-                                    网络协议
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AF%87/" class="post-category">
+                                    算法篇
                                 </a>
                             
                             
@@ -981,8 +1059,65 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/network/">
-                        <span class="chip bg-color">network</span>
+                    <a href="/tags/algorithm/">
+                        <span class="chip bg-color">algorithm</span>
+                    </a>
+                    
+                    <a href="/tags/binarytree/">
+                        <span class="chip bg-color">binarytree</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/14/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="二叉树学习笔记">
+                        
+                        <span class="card-title">二叉树学习笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            玩转二叉树
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AF%87/" class="post-category">
+                                    算法篇
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/algorithm/">
+                        <span class="chip bg-color">algorithm</span>
+                    </a>
+                    
+                    <a href="/tags/binarytree/">
+                        <span class="chip bg-color">binarytree</span>
                     </a>
                     
                 </div>
