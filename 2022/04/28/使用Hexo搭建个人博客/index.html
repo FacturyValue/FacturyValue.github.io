@@ -568,6 +568,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -589,8 +592,7 @@
 </li>
 <li>Install Node.js</li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">For Mac users
-You may encounter some problems when compiling. Please install Xcode from App Store first. After Xcode is installed<span class="token punctuation">,</span> open Xcode and go to Preferences <span class="token punctuation">-</span><span class="token punctuation">&gt;</span> Download <span class="token punctuation">-</span><span class="token punctuation">&gt;</span> Command Line Tools <span class="token punctuation">-</span><span class="token punctuation">&gt;</span> Install to install command line tools.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">For</span> <span class="string">Mac</span> <span class="string">users</span></span><br><span class="line"><span class="string">You</span> <span class="string">may</span> <span class="string">encounter</span> <span class="string">some</span> <span class="string">problems</span> <span class="string">when</span> <span class="string">compiling.</span> <span class="string">Please</span> <span class="string">install</span> <span class="string">Xcode</span> <span class="string">from</span> <span class="string">App</span> <span class="string">Store</span> <span class="string">first.</span> <span class="string">After</span> <span class="string">Xcode</span> <span class="string">is</span> <span class="string">installed,</span> <span class="string">open</span> <span class="string">Xcode</span> <span class="string">and</span> <span class="string">go</span> <span class="string">to</span> <span class="string">Preferences</span> <span class="string">-&gt;</span> <span class="string">Download</span> <span class="string">-&gt;</span> <span class="string">Command</span> <span class="string">Line</span> <span class="string">Tools</span> <span class="string">-&gt;</span> <span class="string">Install</span> <span class="string">to</span> <span class="string">install</span> <span class="string">command</span> <span class="string">line</span> <span class="string">tools.</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p><code>Windows</code>: Install it with <a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs/">nvs</a> (recommended) or <a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">nvm</a>.</p>
@@ -604,7 +606,7 @@ You may encounter some problems when compiling. Please install Xcode from App St
 <li><p>安装<code>Hexo-cli</code></p>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -614,54 +616,23 @@ You may encounter some problems when compiling. Please install Xcode from App St
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 初始化博客目录</span>
-hexo init website-hexo
-<span class="token comment"># 进入博客目录</span>
-<span class="token builtin class-name">cd</span> website-hexo
-<span class="token comment"># 安装博客相关依赖</span>
-<span class="token function">npm</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化博客目录</span></span><br><span class="line">hexo init website-hexo</span><br><span class="line"><span class="comment"># 进入博客目录</span></span><br><span class="line"><span class="built_in">cd</span> website-hexo</span><br><span class="line"><span class="comment"># 安装博客相关依赖</span></span><br><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>目录结构如下</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">.
-├── _config.yml
-├── package.json
-├── scaffolds
-├── source
-|   ├── _drafts
-|   └── _posts
-└── themes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><h5 id="Site-configuration-file-You-can-configure-most-settings-here"><a href="#Site-configuration-file-You-can-configure-most-settings-here" class="headerlink" title="Site configuration file. You can configure most settings here."></a>Site <a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration">configuration</a> file. You can configure most settings here.</h5><h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">package.json
-<span class="token punctuation">{</span>
-  <span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"hexo-site"</span>,
-  <span class="token string">"version"</span><span class="token builtin class-name">:</span> <span class="token string">"0.0.0"</span>,
-  <span class="token string">"private"</span><span class="token builtin class-name">:</span> true,
-  <span class="token string">"hexo"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"version"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>
-  <span class="token punctuation">}</span>,
-  <span class="token string">"dependencies"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"hexo"</span><span class="token builtin class-name">:</span> <span class="token string">"^3.8.0"</span>,
-    <span class="token string">"hexo-generator-archive"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.1.5"</span>,
-    <span class="token string">"hexo-generator-category"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.1.3"</span>,
-    <span class="token string">"hexo-generator-index"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.2.1"</span>,
-    <span class="token string">"hexo-generator-tag"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.2.0"</span>,
-    <span class="token string">"hexo-renderer-ejs"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.3.1"</span>,
-    <span class="token string">"hexo-renderer-stylus"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.3.3"</span>,
-    <span class="token string">"hexo-renderer-marked"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.3.2"</span>,
-    <span class="token string">"hexo-server"</span><span class="token builtin class-name">:</span> <span class="token string">"^0.3.3"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><h5 id="Site-configuration-file-You-can-configure-most-settings-here"><a href="#Site-configuration-file-You-can-configure-most-settings-here" class="headerlink" title="Site configuration file. You can configure most settings here."></a>Site <a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration">configuration</a> file. You can configure most settings here.</h5><h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package.json</span><br><span class="line">{</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"hexo-site"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.0.0"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"hexo"</span>: {</span><br><span class="line">    <span class="string">"version"</span>: <span class="string">""</span></span><br><span class="line">  },</span><br><span class="line">  <span class="string">"dependencies"</span>: {</span><br><span class="line">    <span class="string">"hexo"</span>: <span class="string">"^3.8.0"</span>,</span><br><span class="line">    <span class="string">"hexo-generator-archive"</span>: <span class="string">"^0.1.5"</span>,</span><br><span class="line">    <span class="string">"hexo-generator-category"</span>: <span class="string">"^0.1.3"</span>,</span><br><span class="line">    <span class="string">"hexo-generator-index"</span>: <span class="string">"^0.2.1"</span>,</span><br><span class="line">    <span class="string">"hexo-generator-tag"</span>: <span class="string">"^0.2.0"</span>,</span><br><span class="line">    <span class="string">"hexo-renderer-ejs"</span>: <span class="string">"^0.3.1"</span>,</span><br><span class="line">    <span class="string">"hexo-renderer-stylus"</span>: <span class="string">"^0.3.3"</span>,</span><br><span class="line">    <span class="string">"hexo-renderer-marked"</span>: <span class="string">"^0.3.2"</span>,</span><br><span class="line">    <span class="string">"hexo-server"</span>: <span class="string">"^0.3.3"</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
-<h3 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h3><h6 id="Scaffold-folder-When-you-create-a-new-post-Hexo-bases-the-new-file-on-the-scaffold"><a href="#Scaffold-folder-When-you-create-a-new-post-Hexo-bases-the-new-file-on-the-scaffold" class="headerlink" title="Scaffold folder. When you create a new post, Hexo bases the new file on the scaffold."></a><a target="_blank" rel="noopener" href="https://hexo.io/docs/writing#Scaffolds">Scaffold</a> folder. When you create a new post, Hexo bases the new file on the scaffold.</h6><h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><pre class="line-numbers language-none"><code class="language-none">Source folder. This is where you put your site’s content. Hexo ignores hidden files and files or folders whose names are prefixed with _ (underscore) - except the _posts folder. Renderable files (e.g. Markdown, HTML) will be processed and put into the public folder, while other files will simply be copied.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h3><h6 id="Scaffold-folder-When-you-create-a-new-post-Hexo-bases-the-new-file-on-the-scaffold"><a href="#Scaffold-folder-When-you-create-a-new-post-Hexo-bases-the-new-file-on-the-scaffold" class="headerlink" title="Scaffold folder. When you create a new post, Hexo bases the new file on the scaffold."></a><a target="_blank" rel="noopener" href="https://hexo.io/docs/writing#Scaffolds">Scaffold</a> folder. When you create a new post, Hexo bases the new file on the scaffold.</h6><h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Source folder. This is where you put your site’s content. Hexo ignores hidden files and files or folders whose names are prefixed with _ (underscore) - except the _posts folder. Renderable files (e.g. Markdown, HTML) will be processed and put into the public folder, while other files will simply be copied.</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h3><h5 id="Theme-folder-Hexo-generates-a-static-website-by-combining-the-site-contents-with-the-theme"><a href="#Theme-folder-Hexo-generates-a-static-website-by-combining-the-site-contents-with-the-theme" class="headerlink" title="Theme folder. Hexo generates a static website by combining the site contents with the theme"></a><a target="_blank" rel="noopener" href="https://hexo.io/docs/themes">Theme</a> folder. Hexo generates a static website by combining the site contents with the theme</h5><ul>
 <li>使用命令启动<code>hexo</code></li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -674,37 +645,7 @@ hexo init website-hexo
 <li><p>修改项目根目录下的配置文件<code>_config.yml</code>,将<code>theme</code>属性改为 <code>hexo-theme-matery</code></p>
 </li>
 <li><p>```bash<br>theme: hexo-theme-matery</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 其他配置
-
-  - 网站配置
-  - 网址配置
-  - 首页配置
-
-```yaml
-# 网站配置
-title: rudy's blog # 网站标题
-subtitle: 'rudy 的个人博客' # 网站副标题
-description: 'Justice may be late, but will never be absent.' # 网站描述
-keywords:
-author: rudy # 网站作者
-language: zh-CN # 网站使用的语言，可以设置为中文
-timezone: ''
-
-# 网址配置
-url: http://localhost:4000 # 网址，会影响文章页的原文链接地址
-permalink: :year/:month/:day/:title/ # 文章的永久链接格式
-
-# 首页配置
-index_generator:
-  path: ''
-  per_page: 12 # 分页设置，该主题设置6、12、18比较好
-  order_by: -date # 按时间倒序排列
-
-# 分页配置
-per_page: 12
-pagination_dir: page
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 其他配置</span><br><span class="line"></span><br><span class="line">  - 网站配置</span><br><span class="line">  - 网址配置</span><br><span class="line">  - 首页配置</span><br><span class="line"></span><br><span class="line">```yaml</span><br><span class="line"># 网站配置</span><br><span class="line">title: rudy's blog # 网站标题</span><br><span class="line">subtitle: 'rudy 的个人博客' # 网站副标题</span><br><span class="line">description: 'Justice may be late, but will never be absent.' # 网站描述</span><br><span class="line">keywords:</span><br><span class="line">author: rudy # 网站作者</span><br><span class="line">language: zh-CN # 网站使用的语言，可以设置为中文</span><br><span class="line">timezone: ''</span><br><span class="line"></span><br><span class="line"># 网址配置</span><br><span class="line">url: http://localhost:4000 # 网址，会影响文章页的原文链接地址</span><br><span class="line">permalink: :year/:month/:day/:title/ # 文章的永久链接格式</span><br><span class="line"></span><br><span class="line"># 首页配置</span><br><span class="line">index_generator:</span><br><span class="line">  path: ''</span><br><span class="line">  per_page: 12 # 分页设置，该主题设置6、12、18比较好</span><br><span class="line">  order_by: -date # 按时间倒序排列</span><br><span class="line"></span><br><span class="line"># 分页配置</span><br><span class="line">per_page: 12</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 <h1 id="添加固定页面"><a href="#添加固定页面" class="headerlink" title="添加固定页面"></a>添加固定页面</h1><ul>
 <li><p>创建导航按钮如标签、分类、归档对应页面</p>
@@ -712,72 +653,39 @@ pagination_dir: page
 <li><p>使用<code>hexo new page "categories"</code>命令新建分类页，分类页至少包含如下内容；</p>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">---
-title: categories
-date: <span class="token number">2021</span>-09-06 <span class="token number">10</span>:19:56
-type: <span class="token string">"categories"</span>
-layout: <span class="token string">"categories"</span>
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line"><span class="built_in">date</span>: 2021-09-06 10:19:56</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"categories"</span></span><br><span class="line">layout: <span class="string">"categories"</span></span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>使用<code>hexo new page "tags"</code>命令新建标签页，标签页至少包含如下内容；</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">---
-title: tags
-date: <span class="token number">2021</span>-09-06 <span class="token number">10</span>:25:04
-type: <span class="token string">"tags"</span>
-layout: <span class="token string">"tags"</span>
----
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line"><span class="built_in">date</span>: 2021-09-06 10:25:04</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br><span class="line">layout: <span class="string">"tags"</span></span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>使用<code>hexo new page "about"</code> 命令新建关于页面,关于页至少包含如下内容;</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">---
-title: about
-date: <span class="token number">2021</span>-09-06 <span class="token number">10</span>:28:56
-type: <span class="token string">"about"</span>
-layout: <span class="token string">"about"</span>
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: about</span><br><span class="line"><span class="built_in">date</span>: 2021-09-06 10:28:56</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"about"</span></span><br><span class="line">layout: <span class="string">"about"</span></span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>使用<code>hexo new page 404</code>命令新建404页，404至少包含如下内容；</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">---
-title: <span class="token number">404</span>
-date: <span class="token number">2021</span>-09-06 <span class="token number">10</span>:32:48
-type: <span class="token string">"404"</span>
-layout: <span class="token string">"404"</span>
-description: <span class="token string">"Oops～，我崩溃了！找不到你想要的页面 :("</span>
----
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line"><span class="built_in">date</span>: 2021-09-06 10:32:48</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"404"</span></span><br><span class="line">layout: <span class="string">"404"</span></span><br><span class="line">description: <span class="string">"Oops～，我崩溃了！找不到你想要的页面 :("</span></span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>hexo new page "friends"</code></li>
 </ul>
 <p>Edit the file <code>/source/friends/index.md</code> you just created, at least you need the following:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">---
-title: friends
-date: <span class="token number">2018</span>-12-12 <span class="token number">21</span>:25:30
-type: <span class="token string">"friends"</span>
-layout: <span class="token string">"friends"</span>
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: friends</span><br><span class="line"><span class="built_in">date</span>: 2018-12-12 21:25:30</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"friends"</span></span><br><span class="line">layout: <span class="string">"friends"</span></span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>使用<code>hexo new page "contact"</code>现建一个交流页面</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">---
-title: contact
-date: <span class="token number">2018</span>-09-30 <span class="token number">17</span>:25:30
-type: <span class="token string">"contact"</span>
-layout: <span class="token string">"contact"</span>
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: contact</span><br><span class="line"><span class="built_in">date</span>: 2018-09-30 17:25:30</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"contact"</span></span><br><span class="line">layout: <span class="string">"contact"</span></span><br><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -786,149 +694,65 @@ layout: <span class="token string">"contact"</span>
 <h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><ul>
 <li>菜单导航配置 修改<code>hexo-theme-matery</code>下的<code>_config.yml</code></li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">menu:
-  Index:
-    url: /
-    icon: fas fa-home
-  Tags:
-    url: /tags
-    icon: fas fa-tags
-  Categories:
-    url: /categories
-    icon: fas fa-bookmark
-  Archives:
-    url: /archives
-    icon: fas fa-archive
-  About:
-    url: /about
-    icon: fas fa-user-circle
-  Friends:
-    url: /friends
-    icon: fas fa-address-book<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  Index:</span><br><span class="line">    url: /</span><br><span class="line">    icon: fas fa-home</span><br><span class="line">  Tags:</span><br><span class="line">    url: /tags</span><br><span class="line">    icon: fas fa-tags</span><br><span class="line">  Categories:</span><br><span class="line">    url: /categories</span><br><span class="line">    icon: fas fa-bookmark</span><br><span class="line">  Archives:</span><br><span class="line">    url: /archives</span><br><span class="line">    icon: fas fa-archive</span><br><span class="line">  About:</span><br><span class="line">    url: /about</span><br><span class="line">    icon: fas fa-user-circle</span><br><span class="line">  Friends:</span><br><span class="line">    url: /friends</span><br><span class="line">    icon: fas fa-address-book</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>子菜单配置</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">menu:
-  Index:
-    url: /
-    icon: fas fa-home
-  Tags:
-    url: /tags
-    icon: fas fa-tags
-  Categories:
-    url: /categories
-    icon: fas fa-bookmark
-  Archives:
-    url: /archives
-    icon: fas fa-archive
-  About:
-    url: /about
-    icon: fas fa-user-circle
-  Friends:
-    url: /friends
-    icon: fas fa-address-book
-  <span class="token comment"># 子菜单配置</span>
-  Medias:
-    icon: fas fa-list
-    children:
-      - name: Music
-        url: /music
-        icon: fas fa-music
-      - name: Movies
-        url: /movies
-        icon: fas fa-film
-      - name: Books
-        url: /books
-        icon: fas fa-book
-      - name: Galleries
-        url: /galleries
-        icon: fas fa-image<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  Index:</span><br><span class="line">    url: /</span><br><span class="line">    icon: fas fa-home</span><br><span class="line">  Tags:</span><br><span class="line">    url: /tags</span><br><span class="line">    icon: fas fa-tags</span><br><span class="line">  Categories:</span><br><span class="line">    url: /categories</span><br><span class="line">    icon: fas fa-bookmark</span><br><span class="line">  Archives:</span><br><span class="line">    url: /archives</span><br><span class="line">    icon: fas fa-archive</span><br><span class="line">  About:</span><br><span class="line">    url: /about</span><br><span class="line">    icon: fas fa-user-circle</span><br><span class="line">  Friends:</span><br><span class="line">    url: /friends</span><br><span class="line">    icon: fas fa-address-book</span><br><span class="line">  <span class="comment"># 子菜单配置</span></span><br><span class="line">  Medias:</span><br><span class="line">    icon: fas fa-list</span><br><span class="line">    children:</span><br><span class="line">      - name: Music</span><br><span class="line">        url: /music</span><br><span class="line">        icon: fas fa-music</span><br><span class="line">      - name: Movies</span><br><span class="line">        url: /movies</span><br><span class="line">        icon: fas fa-film</span><br><span class="line">      - name: Books</span><br><span class="line">        url: /books</span><br><span class="line">        icon: fas fa-book</span><br><span class="line">      - name: Galleries</span><br><span class="line">        url: /galleries</span><br><span class="line">        icon: fas fa-image</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>代码高亮配置 修改<code>website-hexo</code>下的<code>_config.yml</code></li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">highlight:
-  enable: <span class="token boolean">false</span>
-  line_number: <span class="token boolean">true</span>
-  auto_detect: <span class="token boolean">false</span>
-  tab_replace: <span class="token string">''</span>
-  wrap: <span class="token boolean">true</span>
-  hljs: <span class="token boolean">false</span>
-prismjs:
-  enable: <span class="token boolean">true</span>
-  preprocess: <span class="token boolean">true</span>
-  line_number: <span class="token boolean">true</span>
-  tab_replace: <span class="token string">''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">false</span></span><br><span class="line">  line_number: <span class="literal">true</span></span><br><span class="line">  auto_detect: <span class="literal">false</span></span><br><span class="line">  tab_replace: <span class="string">''</span></span><br><span class="line">  wrap: <span class="literal">true</span></span><br><span class="line">  hljs: <span class="literal">false</span></span><br><span class="line">prismjs:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  preprocess: <span class="literal">true</span></span><br><span class="line">  line_number: <span class="literal">true</span></span><br><span class="line">  tab_replace: <span class="string">''</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="搜索插件安装"><a href="#搜索插件安装" class="headerlink" title="搜索插件安装"></a>搜索插件安装</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-generator-search --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="搜索插件安装"><a href="#搜索插件安装" class="headerlink" title="搜索插件安装"></a>搜索插件安装</h1><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="汉语转拼音"><a href="#汉语转拼音" class="headerlink" title="汉语转拼音"></a>汉语转拼音</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i hexo-permalink-pinyin --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="汉语转拼音"><a href="#汉语转拼音" class="headerlink" title="汉语转拼音"></a>汉语转拼音</h1><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-permalink-pinyin --save</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li> 修改<code>website-hexo</code>下的<code>_config.yml</code></li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">permalink_pinyin:
-  enable: <span class="token boolean">true</span>
-  separator: <span class="token string">'-'</span> <span class="token comment"># default: '-'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">permalink_pinyin:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  separator: <span class="string">'-'</span> <span class="comment"># default: '-'</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="文章统计分析"><a href="#文章统计分析" class="headerlink" title="文章统计分析"></a>文章统计分析</h1><ul>
 <li>安装插件命令</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i --save hexo-wordcount	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save hexo-wordcount	</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>修改主题中的<code>_config.yml</code>文件</li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">postInfo</span><span class="token punctuation">:</span>
-  <span class="token key atrule">date</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">update</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-  <span class="token key atrule">wordCount</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> <span class="token comment"># set true.</span>
-  <span class="token key atrule">totalCount</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> <span class="token comment"># set true.</span>
-  <span class="token key atrule">min2read</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> <span class="token comment"># set true.</span>
-  <span class="token key atrule">readCount</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> <span class="token comment"># set true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">postInfo:</span></span><br><span class="line">  <span class="attr">date:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">update:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">wordCount:</span> <span class="literal">false</span> <span class="comment"># set true.</span></span><br><span class="line">  <span class="attr">totalCount:</span> <span class="literal">false</span> <span class="comment"># set true.</span></span><br><span class="line">  <span class="attr">min2read:</span> <span class="literal">false</span> <span class="comment"># set true.</span></span><br><span class="line">  <span class="attr">readCount:</span> <span class="literal">false</span> <span class="comment"># set true.</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="添加表情支持"><a href="#添加表情支持" class="headerlink" title="添加表情支持"></a>添加表情支持</h1><ul>
 <li>安装插件命令</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-filter-github-emojis --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-filter-github-emojis --save</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>修改<code>website-hexo</code>目录下的<code>_config.ymal</code>文件</li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">githubEmojis</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">className</span><span class="token punctuation">:</span> github<span class="token punctuation">-</span>emoji
-  <span class="token key atrule">inject</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">styles</span><span class="token punctuation">:</span>
-  customEmojis<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">githubEmojis:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">className:</span> <span class="string">github-emoji</span></span><br><span class="line">  <span class="attr">inject:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">styles:</span></span><br><span class="line">  <span class="attr">customEmojis:</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="Add-RSS-feed-support-Optional"><a href="#Add-RSS-feed-support-Optional" class="headerlink" title="Add RSS feed support (Optional)"></a>Add RSS feed support (Optional)</h1><ul>
 <li>支持<code>RSS</code>反馈,插件安装命令</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-generator-feed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>修改<code>website-hexo</code>目录下的<code>_config.ymal</code>文件</li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">feed</span><span class="token punctuation">:</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> atom
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> atom.xml
-  <span class="token key atrule">limit</span><span class="token punctuation">:</span> <span class="token number">20</span>
-  <span class="token key atrule">hub</span><span class="token punctuation">:</span>
-  <span class="token key atrule">content</span><span class="token punctuation">:</span>
-  <span class="token key atrule">content_limit</span><span class="token punctuation">:</span> <span class="token number">140</span>
-  <span class="token key atrule">content_limit_delim</span><span class="token punctuation">:</span> <span class="token string">' '</span>
-  <span class="token key atrule">order_by</span><span class="token punctuation">:</span> <span class="token punctuation">-</span>date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feed:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">atom</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">atom.xml</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">20</span></span><br><span class="line">  <span class="attr">hub:</span></span><br><span class="line">  <span class="attr">content:</span></span><br><span class="line">  <span class="attr">content_limit:</span> <span class="number">140</span></span><br><span class="line">  <span class="attr">content_limit_delim:</span> <span class="string">' '</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>运行命令完成配置</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="社交链接修改"><a href="#社交链接修改" class="headerlink" title="社交链接修改"></a>社交链接修改</h1><ul>
 <li><p>修改主题目录下<code>_config.yaml</code>文件,主题默认支持<code>QQ</code>,<code>Github</code>和邮箱配置</p>
@@ -936,11 +760,7 @@ prismjs:
 <li><p>然后修改主题文件<code>/layout/_partial/social-link.ejs</code> ,添加或者修改链接信息</p>
 </li>
 </ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>theme<span class="token punctuation">.</span>socialLink<span class="token punctuation">.</span>github<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"&lt;%= theme.socialLink.github %&gt;"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"tooltipped"</span> target<span class="token operator">=</span><span class="token string">"_blank"</span> data<span class="token operator">-</span>tooltip<span class="token operator">=</span><span class="token string">"访问我的GitHub"</span> data<span class="token operator">-</span>position<span class="token operator">=</span><span class="token string">"top"</span> data<span class="token operator">-</span>delay<span class="token operator">=</span><span class="token string">"50"</span><span class="token operator">&gt;</span>
-        <span class="token operator">&lt;</span>i <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"fab fa-github"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
-<span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.<span class="property">socialLink</span>.<span class="property">github</span>) { %&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%= theme.socialLink.github %&gt;"</span> <span class="attr">class</span>=<span class="string">"tooltipped"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">data-tooltip</span>=<span class="string">"访问我的GitHub"</span> <span class="attr">data-position</span>=<span class="string">"top"</span> <span class="attr">data-delay</span>=<span class="string">"50"</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fab fa-github"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;% } %&gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="编写文章"><a href="#编写文章" class="headerlink" title="编写文章"></a>编写文章</h1><ul>
 <li>熟悉MarkDown语法</li>
@@ -957,13 +777,9 @@ prismjs:
 <li><p>一键部署</p>
 <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1></li>
 <li><p>安装 hexo-deployer-git。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>修改配置</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> git
-  <span class="token key atrule">repo</span><span class="token punctuation">:</span> &lt;repository url<span class="token punctuation">&gt;</span> <span class="token comment">#https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io</span>
-  <span class="token key atrule">branch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>branch<span class="token punctuation">]</span>
-  <span class="token key atrule">message</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>message<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">&lt;repository</span> <span class="string">url&gt;</span> <span class="comment">#https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io</span></span><br><span class="line">  <span class="attr">branch:</span> [<span class="string">branch</span>]</span><br><span class="line">  <span class="attr">message:</span> [<span class="string">message</span>]</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>部署命令</p>
 <ul>
 <li>Run <code>hexo clean</code> &amp;&amp; <code>hexo deploy</code></li>

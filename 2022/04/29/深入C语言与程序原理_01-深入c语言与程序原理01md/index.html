@@ -564,6 +564,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -666,13 +669,7 @@
 <li>汇编语言是一种低级编程语言，它用助记符的形式来描述程序对应机器指令的基本逻辑。由于它直接对应于 CPU 指令集之上，因此不具有可移植性</li>
 <li>寄存器是位于 CPU 芯片上的高速数据存储单元，根据功能，它可以被分为通用目的寄存器、状态寄存器等多种类型。x86-64 一共提供了 16 个通用目的寄存器，通过在汇编代码中使用不同的寄存器别名，我们可以快速访问这些寄存器中存放的数据</li>
 </ul>
-<h5 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h5><pre class="line-numbers language-c" data-language="c"><code class="language-c">当所有指令执行完毕时，寄存器 eax 中的值是多少？
-mov eax<span class="token punctuation">,</span> <span class="token number">0x1</span>
-inc eax
-sub eax<span class="token punctuation">,</span> <span class="token number">10</span>
-xor eax<span class="token punctuation">,</span> eax
-add eax<span class="token punctuation">,</span> <span class="token number">1</span>
-mul eax<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h5><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">当所有指令执行完毕时，寄存器 eax 中的值是多少？</span><br><span class="line">mov eax, <span class="number">0x1</span></span><br><span class="line">inc eax</span><br><span class="line">sub eax, <span class="number">10</span></span><br><span class="line">xor eax, eax</span><br><span class="line">add eax, <span class="number">1</span></span><br><span class="line">mul eax</span><br></pre></td></tr></tbody></table></figure>
                 
             </div>
             <hr/>

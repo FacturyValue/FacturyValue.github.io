@@ -542,7 +542,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    149
+                    146
                 </div>
                 
 
@@ -564,16 +564,16 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="GitHub解决Pull和Push速度慢的问题"><a href="#GitHub解决Pull和Push速度慢的问题" class="headerlink" title="GitHub解决Pull和Push速度慢的问题"></a>GitHub解决Pull和Push速度慢的问题</h3><h3 id="亲自测得出的效果，git-clone-能达到-M-s-的速度"><a href="#亲自测得出的效果，git-clone-能达到-M-s-的速度" class="headerlink" title="亲自测得出的效果，git clone 能达到 M/s 的速度"></a>亲自测得出的效果，git clone 能达到 M/s 的速度</h3><ul>
-<li>打开<a target="_blank" rel="noopener" href="http://tool.chinaz.com/dns">DNS 网站查询ip</a>网站查询域名映射IP，例如<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">52.217</span><span class="token number">.37</span><span class="token number">.68</span>	http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token operator">-</span>windows<span class="token punctuation">.</span>s3<span class="token punctuation">.</span>amazonaws<span class="token punctuation">.</span>com
-<span class="token number">157.240</span><span class="token number">.11</span><span class="token number">.40</span>	http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>global<span class="token punctuation">.</span>ssl<span class="token punctuation">.</span>fastly<span class="token punctuation">.</span>net
-<span class="token number">185.199</span><span class="token number">.110</span><span class="token number">.153</span>	http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>assets<span class="token operator">-</span>cdn<span class="token punctuation">.</span>github<span class="token punctuation">.</span>com
-<span class="token number">20.205</span><span class="token number">.243</span><span class="token number">.166</span>	http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>打开<a target="_blank" rel="noopener" href="http://tool.chinaz.com/dns">DNS 网站查询ip</a>网站查询域名映射IP，例如<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">52.217</span><span class="number">.37</span><span class="number">.68</span>	http:<span class="comment">//github-windows.s3.amazonaws.com</span></span><br><span class="line"><span class="number">157.240</span><span class="number">.11</span><span class="number">.40</span>	http:<span class="comment">//github.global.ssl.fastly.net</span></span><br><span class="line"><span class="number">185.199</span><span class="number">.110</span><span class="number">.153</span>	http:<span class="comment">//assets-cdn.github.com</span></span><br><span class="line"><span class="number">20.205</span><span class="number">.243</span><span class="number">.166</span>	http:<span class="comment">//github.com</span></span><br></pre></td></tr></tbody></table></figure></li>
 <li>修改host文件<blockquote>
 <ul>
 <li><code>C:\Windows\System32\drivers\etc</code>，打开host文件在最文件底部输入上述映射关系，<ul>

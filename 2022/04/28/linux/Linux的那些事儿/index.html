@@ -533,7 +533,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    463
+                    462
                 </div>
                 
 
@@ -555,6 +555,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -562,36 +565,16 @@
             <div id="articleContent">
                 <h2 id="linux-卸载系列"><a href="#linux-卸载系列" class="headerlink" title="linux 卸载系列"></a>linux 卸载系列</h2><h4 id="mysql卸载"><a href="#mysql卸载" class="headerlink" title="mysql卸载"></a>mysql卸载</h4><ul>
 <li><p>查看是否有安装mysql</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rpm -qa|grep -i mysql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@192 lib]<span class="comment"># rpm -qa|grep -i mysql</span></span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>mysql57-community-release-el7-9.noarch<br>mysql-community-libs-5.7.37-1.el7.x86_64<br>mysql-community-common-5.7.37-1.el7.x86_64<br>mysql-community-server-5.7.37-1.el7.x86_64<br>mysql-community-client-5.7.37-1.el7.x86_64</p>
 </blockquote>
 </li>
 <li><p>停止mysql服务</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># systemctl stop mysqld</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@192 lib]<span class="comment"># systemctl stop mysqld</span></span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>开始删除mysql</p>
 <ul>
-<li>删除列表中的第一个就可以了<pre class="line-numbers language-none"><code class="language-none">[root@192 lib]# rpm -ev mysql57-community-release-el7-9.noarch --nodeps
-
-# 如果不放心全部删除 注意依赖关系 先删除server--&gt;client--&gt;libs--&gt;common
-[root@192 lib]# rpm -ev mysql-community-client-5.7.37-1.el7.x86_64
-error: Failed dependencies:
-	mysql-community-client(x86-64) &gt;= 5.7.9 is needed by (installed) mysql-community-server-5.7.37-1.el7.x86_64
-[root@192 lib]# rpm -ev mysql-community-server-5.7.37-1.el7.x86_64
-Preparing packages...
-mysql-community-server-5.7.37-1.el7.x86_64
-[root@192 lib]# rpm -ev mysql-community-client-5.7.37-1.el7.x86_64
-Preparing packages...
-mysql-community-client-5.7.37-1.el7.x86_64
-[root@192 lib]# rpm -ev mysql-community-common-5.7.37-1.el7.x86_64
-error: Failed dependencies:
-	mysql-community-common(x86-64) &gt;= 5.7.9 is needed by (installed) mysql-community-libs-5.7.37-1.el7.x86_64
-[root@192 lib]# rpm -ev mysql-community-libs-5.7.37-1.el7.x86_64
-Preparing packages...
-mysql-community-libs-5.7.37-1.el7.x86_64
-[root@192 lib]# rpm -ev mysql-community-common-5.7.37-1.el7.x86_64
-Preparing packages...
-mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>删除列表中的第一个就可以了<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@192 lib]# rpm -ev mysql57-community-release-el7-9.noarch --nodeps</span><br><span class="line"></span><br><span class="line"># 如果不放心全部删除 注意依赖关系 先删除server--&gt;client--&gt;libs--&gt;common</span><br><span class="line">[root@192 lib]# rpm -ev mysql-community-client-5.7.37-1.el7.x86_64</span><br><span class="line">error: Failed dependencies:</span><br><span class="line">	mysql-community-client(x86-64) &gt;= 5.7.9 is needed by (installed) mysql-community-server-5.7.37-1.el7.x86_64</span><br><span class="line">[root@192 lib]# rpm -ev mysql-community-server-5.7.37-1.el7.x86_64</span><br><span class="line">Preparing packages...</span><br><span class="line">mysql-community-server-5.7.37-1.el7.x86_64</span><br><span class="line">[root@192 lib]# rpm -ev mysql-community-client-5.7.37-1.el7.x86_64</span><br><span class="line">Preparing packages...</span><br><span class="line">mysql-community-client-5.7.37-1.el7.x86_64</span><br><span class="line">[root@192 lib]# rpm -ev mysql-community-common-5.7.37-1.el7.x86_64</span><br><span class="line">error: Failed dependencies:</span><br><span class="line">	mysql-community-common(x86-64) &gt;= 5.7.9 is needed by (installed) mysql-community-libs-5.7.37-1.el7.x86_64</span><br><span class="line">[root@192 lib]# rpm -ev mysql-community-libs-5.7.37-1.el7.x86_64</span><br><span class="line">Preparing packages...</span><br><span class="line">mysql-community-libs-5.7.37-1.el7.x86_64</span><br><span class="line">[root@192 lib]# rpm -ev mysql-community-common-5.7.37-1.el7.x86_64</span><br><span class="line">Preparing packages...</span><br><span class="line">mysql-community-common-5.7.37-1.el7.x86_64</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 <li><p>再执行一边过滤查询确定删除干净</p>
@@ -602,18 +585,13 @@ mysql-community-common-5.7.37-1.el7.x86_64<span aria-hidden="true" class="line-n
 <li><p>删除之前旧版本mysql安装目录</p>
 <ul>
 <li>先查看mysql目录</li>
-<li>再依次删除<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> / -name mysql
-
-<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /var/lib/mysql</span>
-<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /var/lib/mysql/mysql</span>
-<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /usr/lib64/mysql</span>
-<span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /usr/share/mysql</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>再依次删除<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find / -name mysql</span><br><span class="line"></span><br><span class="line">[root@192 lib]<span class="comment"># rm -rf /var/lib/mysql</span></span><br><span class="line">[root@192 lib]<span class="comment"># rm -rf /var/lib/mysql/mysql</span></span><br><span class="line">[root@192 lib]<span class="comment"># rm -rf /usr/lib64/mysql</span></span><br><span class="line">[root@192 lib]<span class="comment"># rm -rf /usr/share/mysql</span></span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 <li><p>卸载后/etc/my.cnf不会删除，需要进行手工删除</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rm -rf /etc/my.cnf</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@192 lib]<span class="comment"># rm -rf /etc/my.cnf</span></span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>再次检查是否删除干净</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@192 lib<span class="token punctuation">]</span><span class="token comment"># rpm -qa|grep -i mysql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@192 lib]<span class="comment"># rpm -qa|grep -i mysql</span></span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>mysql安装推荐阿里云官方文档 安装示例</p>
 <ul>
 <li>nginx卸载<ul>

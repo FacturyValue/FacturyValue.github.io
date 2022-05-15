@@ -554,6 +554,9 @@ Docker插件使用Docker开启远程API用vim编辑器修改do">
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -566,93 +569,42 @@ Docker插件使用Docker开启远程API用vim编辑器修改do">
 <li><code>Docker</code></li>
 <li>基本<code>Docker</code> 命令和<code>Linux</code>命令</li>
 </ul>
-<h1 id="Docker插件使用"><a href="#Docker插件使用" class="headerlink" title="Docker插件使用"></a><code>Docker</code>插件使用</h1><h3 id="Docker开启远程API"><a href="#Docker开启远程API" class="headerlink" title="Docker开启远程API"></a>Docker开启远程API</h3><h4 id="用vim编辑器修改docker-service文件"><a href="#用vim编辑器修改docker-service文件" class="headerlink" title="用vim编辑器修改docker.service文件"></a>用vim编辑器修改docker.service文件</h4><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">vi /usr/lib/systemd/system/docker.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="Docker插件使用"><a href="#Docker插件使用" class="headerlink" title="Docker插件使用"></a><code>Docker</code>插件使用</h1><h3 id="Docker开启远程API"><a href="#Docker开启远程API" class="headerlink" title="Docker开启远程API"></a>Docker开启远程API</h3><h4 id="用vim编辑器修改docker-service文件"><a href="#用vim编辑器修改docker-service文件" class="headerlink" title="用vim编辑器修改docker.service文件"></a>用vim编辑器修改docker.service文件</h4><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/lib/systemd/system/docker.service</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>修改文件内容</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-##修改后的内容
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line"><span class="comment">##修改后的内容</span></span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="让Docker支持http上传镜像"><a href="#让Docker支持http上传镜像" class="headerlink" title="让Docker支持http上传镜像"></a>让Docker支持http上传镜像</h1><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">echo '{ "insecure-registries":["192.168.3.101:5000"] }' &gt; /etc/docker/daemon.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="让Docker支持http上传镜像"><a href="#让Docker支持http上传镜像" class="headerlink" title="让Docker支持http上传镜像"></a>让Docker支持http上传镜像</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'{ "insecure-registries":["192.168.3.101:5000"] }'</span> &gt; /etc/docker/daemon.json</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><h4 id="修改配置后需要使用如下命令使配置生效"><a href="#修改配置后需要使用如下命令使配置生效" class="headerlink" title="修改配置后需要使用如下命令使配置生效"></a>修改配置后需要使用如下命令使配置生效</h4></li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">systemctl daemon-reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li><h4 id="重新启动Docker服务"><a href="#重新启动Docker服务" class="headerlink" title="重新启动Docker服务"></a>重新启动Docker服务</h4></li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">systemctl stop docker
-systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li><h4 id="开启防火墙的Docker构建端口"><a href="#开启防火墙的Docker构建端口" class="headerlink" title="开启防火墙的Docker构建端口"></a>开启防火墙的Docker构建端口</h4></li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">firewall-cmd --zone=public --add-port=2375/tcp --permanent
-firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=2375/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <h3 id="构建所有Docker镜像并上传"><a href="#构建所有Docker镜像并上传" class="headerlink" title="构建所有Docker镜像并上传"></a>构建所有<code>Docker</code>镜像并上传</h3><ul>
 <li><code>Maven</code>使用<code>Docker-maven-plugin</code>插件</li>
 </ul>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>docker.host</span><span class="token punctuation">&gt;</span></span>http://120.79.150.12:2375<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>docker.host</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">docker.host</span>&gt;</span>http://120.79.150.12:2375<span class="tag">&lt;/<span class="name">docker.host</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 打包 --&gt;</span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
-       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
-
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.spotify<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>docker-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.2.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>build-image<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>phase</span><span class="token punctuation">&gt;</span></span>package<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>phase</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">&gt;</span></span>build<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>imageName</span><span class="token punctuation">&gt;</span></span>eladmin/${project.artifactId}:${project.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>imageName</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dockerHost</span><span class="token punctuation">&gt;</span></span>${docker.host}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dockerHost</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>baseImage</span><span class="token punctuation">&gt;</span></span>java:8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>baseImage</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>entryPoint</span><span class="token punctuation">&gt;</span></span>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>entryPoint</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resource</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>targetPath</span><span class="token punctuation">&gt;</span></span>/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>targetPath</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">&gt;</span></span>${project.build.directory}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>${project.build.finalName}.jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resource</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
-           <span class="token comment">&lt;!--跳过单元测试--&gt;</span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-surefire-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>skipTests</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>skipTests</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
-       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 打包 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">id</span>&gt;</span>build-image<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">goal</span>&gt;</span>build<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>eladmin/${project.artifactId}:${project.version}<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>${docker.host}<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">baseImage</span>&gt;</span>java:8<span class="tag">&lt;/<span class="name">baseImage</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">entryPoint</span>&gt;</span>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</span><br><span class="line">                   <span class="tag">&lt;/<span class="name">entryPoint</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">directory</span>&gt;</span>${project.build.directory}<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">include</span>&gt;</span>${project.build.finalName}.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">           <span class="comment">&lt;!--跳过单元测试--&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">skipTests</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skipTests</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>直接双击根项目<code>jceadmin</code>的<code>package</code>命令可以一次性打包所有应用的Docker镜像；</li>
@@ -674,7 +626,7 @@ firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></
 <ul>
 <li>首先创建一个目录用于存储生成的证书和秘钥；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">mkdir /mydata/docker-ca &amp;&amp; cd /mydata/docker-ca<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /mydata/docker-ca &amp;&amp; <span class="built_in">cd</span> /mydata/docker-ca</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>制作CA机构证书<ul>
@@ -682,14 +634,14 @@ firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl genrsa -aes256 -out ca-key.pem 4096<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -aes256 -out ca-key.pem 4096</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>根据私钥创建CA证书，期间需要输入上一步设置的私钥密码，生成文件为<code>ca.pem</code>；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -subj "/CN=*" -out ca.pem<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -subj <span class="string">"/CN=*"</span> -out ca.pem</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -699,21 +651,21 @@ firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl genrsa -out server-key.pem 4096<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out server-key.pem 4096</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>创建服务端证书签名请求文件，用于CA证书给服务端证书签名，生成文件<code>server.csr</code>；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl req -subj "/CN=*" -sha256 -new -key server-key.pem -out server.csr<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -subj <span class="string">"/CN=*"</span> -sha256 -new -key server-key.pem -out server.csr</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>创建CA证书签名好的服务端证书，期间需要输入CA证书私钥密码，生成文件为<code>server-cert.pem</code>；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -days 365 -sha256 -<span class="keyword">in</span> server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -722,35 +674,35 @@ firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></
 <ul>
 <li>创建客户端私钥，生成文件为<code>key.pem</code>；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl genrsa -out key.pem 4096<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out key.pem 4096</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>创建客户端证书签名请求文件，用于CA证书给客户证书签名，生成文件<code>client.csr</code>；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl req -subj "/CN=client" -new -key key.pem -out client.csr<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -subj <span class="string">"/CN=client"</span> -new -key key.pem -out client.csr</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>为了让秘钥适合客户端认证，创建一个扩展配置文件<code>extfile-client.cnf</code>；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">echo extendedKeyUsage = clientAuth &gt; extfile-client.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> extendedKeyUsage = clientAuth &gt; extfile-client.cnf</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>创建CA证书签名好的客户端证书，期间需要输入CA证书私钥密码，生成文件为<code>cert.pem</code>；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile-client.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -days 365 -sha256 -<span class="keyword">in</span> client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile-client.cnf</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>删除创建过程中多余的文件；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">rm -rf ca.srl server.csr client.csr extfile-client.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf ca.srl server.csr client.csr extfile-client.cnf</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -759,58 +711,45 @@ firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-rw-r--r-- <span class="token number">1</span> root root <span class="token number">3326</span> May  <span class="token number">6</span> <span class="token number">19</span>:11 ca-key.pem		CA证书私钥
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">1765</span> May  <span class="token number">6</span> <span class="token number">19</span>:11 ca.pem			CA证书		
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">1696</span> May  <span class="token number">6</span> <span class="token number">19</span>:13 cert.pem		客户端证书
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">3247</span> May  <span class="token number">6</span> <span class="token number">19</span>:13 key.pem		客户端证书私钥
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">1647</span> May  <span class="token number">6</span> <span class="token number">19</span>:12 server-cert.pem  	服务端证书
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">3243</span> May  <span class="token number">6</span> <span class="token number">19</span>:11 server-key.pem		服务端证书私钥<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- 1 root root 3326 May  6 19:11 ca-key.pem		CA证书私钥</span><br><span class="line">-rw-r--r-- 1 root root 1765 May  6 19:11 ca.pem			CA证书		</span><br><span class="line">-rw-r--r-- 1 root root 1696 May  6 19:13 cert.pem		客户端证书</span><br><span class="line">-rw-r--r-- 1 root root 3247 May  6 19:13 key.pem		客户端证书私钥</span><br><span class="line">-rw-r--r-- 1 root root 1647 May  6 19:12 server-cert.pem  	服务端证书</span><br><span class="line">-rw-r--r-- 1 root root 3243 May  6 19:11 server-key.pem		服务端证书私钥</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <h2 id="配置Docker支持TLS"><a href="#配置Docker支持TLS" class="headerlink" title="配置Docker支持TLS"></a>配置Docker支持TLS</h2><ul>
 <li>用vim编辑器修改docker.service文件；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">vim /usr/lib/systemd/system/docker.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/docker.service</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>修改以<code>ExecStart</code>开头的配置，开启TLS认证，并配置好CA证书、服务端证书和服务端私钥，修改内容如下；</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-
-ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --tlsverify --tlscacert=/mydata/docker-ca/ca.pem --tlscert=/mydata/docker-ca/server-cert.pem --tlskey=/mydata/docker-ca/server-key.pem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span></span><br><span class="line"></span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --tlsverify --tlscacert=/mydata/docker-ca/ca.pem --tlscert=/mydata/docker-ca/server-cert.pem --tlskey=/mydata/docker-ca/server-key.pem</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>重启Docker服务，这样我们的Docker服务就支持使用TLS进行远程访问了！</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">systemctl daemon-reload &amp;&amp; systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload &amp;&amp; systemctl restart docker</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="客户端访问"><a href="#客户端访问" class="headerlink" title="客户端访问"></a>客户端访问</h2><ul>
 <li>直接使用<code>docker-maven-plugin</code>打包试试，由于我们的插件版本有点低，使用新一点版本的Docker会出现如下问题，升级到<code>1.2.2</code>版本解决该问题；</li>
 </ul>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.spotify<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>docker-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.2.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>修改完版本后打包，发现TLS不再支持<code>http</code>了，需要改用<code>https</code>，修改<code>&lt;dockerHost&gt;</code>配置为<code>https</code>；</li>
 </ul>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>docker.host</span><span class="token punctuation">&gt;</span></span>https://120.79.150.12:2375<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>docker.host</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">docker.host</span>&gt;</span>https://120.79.150.12:2375<span class="tag">&lt;/<span class="name">docker.host</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>本地机器在指定目录添加客户端证书比如：<code>D:\tools\docker-ca</code></li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">ca.pem			CA证书		
-cert.pem		客户端证书
-key.pem		客户端证书私钥<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ca.pem			CA证书		</span><br><span class="line">cert.pem		客户端证书</span><br><span class="line">key.pem		客户端证书私钥</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -819,68 +758,19 @@ key.pem		客户端证书私钥<span aria-hidden="true" class="line-numbers-rows"
 <ul>
 <li>然后将该目录配置在插件的<code>&lt;dockerCertPath&gt;</code>节点下，最终插件配置如下；</li>
 </ul>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 打包 --&gt;</span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
-       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
-
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.spotify<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>docker-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.2.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>build-image<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>phase</span><span class="token punctuation">&gt;</span></span>package<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>phase</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">&gt;</span></span>build<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>imageName</span><span class="token punctuation">&gt;</span></span>eladmin/${project.artifactId}:${project.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>imageName</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dockerHost</span><span class="token punctuation">&gt;</span></span>${docker.host}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dockerHost</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>baseImage</span><span class="token punctuation">&gt;</span></span>java:8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>baseImage</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>entryPoint</span><span class="token punctuation">&gt;</span></span>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>entryPoint</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dockerCertPath</span><span class="token punctuation">&gt;</span></span>D:\tools\docker-ca<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dockerCertPath</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resource</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>targetPath</span><span class="token punctuation">&gt;</span></span>/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>targetPath</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">&gt;</span></span>${project.build.directory}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">&gt;</span></span>
-                           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>${project.build.finalName}.jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>
-                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resource</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
-           <span class="token comment">&lt;!--跳过单元测试--&gt;</span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-surefire-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
-                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>skipTests</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>skipTests</span><span class="token punctuation">&gt;</span></span>
-               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
-           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
-       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 打包 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">id</span>&gt;</span>build-image<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">goal</span>&gt;</span>build<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>eladmin/${project.artifactId}:${project.version}<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>${docker.host}<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">baseImage</span>&gt;</span>java:8<span class="tag">&lt;/<span class="name">baseImage</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">entryPoint</span>&gt;</span>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</span><br><span class="line">                   <span class="tag">&lt;/<span class="name">entryPoint</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">dockerCertPath</span>&gt;</span>D:\tools\docker-ca<span class="tag">&lt;/<span class="name">dockerCertPath</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">directory</span>&gt;</span>${project.build.directory}<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                           <span class="tag">&lt;<span class="name">include</span>&gt;</span>${project.build.finalName}.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">           <span class="comment">&lt;!--跳过单元测试--&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">skipTests</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skipTests</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>执行命令<code>mvn package</code>，发现已经可以成功打包镜像，从此我们的<code>2375</code>端口终于可以安全使用了！</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">[root@iZwz9c743j35koyx2hety8Z docker-ca]# docker images
-REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
-jceadmin/jceadmin-system      2.6       583ebe19f084   5 hours ago     759MB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZwz9c743j35koyx2hety8Z docker-ca]<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">jceadmin/jceadmin-system      2.6       583ebe19f084   5 hours ago     759MB</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <h1 id="服务器中使用Docker推送镜像到Docker-Hub"><a href="#服务器中使用Docker推送镜像到Docker-Hub" class="headerlink" title="服务器中使用Docker推送镜像到Docker Hub"></a>服务器中使用Docker推送镜像到Docker Hub</h1><ul>
 <li>登录Docker</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">docker login
-# 输入用户名,密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br><span class="line"><span class="comment"># 输入用户名,密码</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>Docker Hub创建仓库</p>
@@ -891,20 +781,19 @@ jceadmin/jceadmin-system      2.6       583ebe19f084   5 hours ago     759MB<spa
 <li><p>使用如下命令行推送镜像</p>
 </li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">docker tag local-image:tagname new-repo:tagname
-docker push new-repo:tagname<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag local-image:tagname new-repo:tagname</span><br><span class="line">docker push new-repo:tagname</span><br></pre></td></tr></tbody></table></figure>
 
 
 
 <ul>
 <li>对镜像打标签</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">docker tag eladmin/eladmin-system:2.6 sirniclolas/jceadmin-system:22.05<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag eladmin/eladmin-system:2.6 sirniclolas/jceadmin-system:22.05</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>推送到Docker Hub</li>
 </ul>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">docker push sirniclolas/jceadmin-system:22.05<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push sirniclolas/jceadmin-system:22.05</span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
 <li><p><a target="_blank" rel="noopener" href="http://www.macrozheng.com/mall/reference/docker_maven.html#%E5%9C%A8%E5%BA%94%E7%94%A8%E7%9A%84pom-xml%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0docker-maven-plugin%E7%9A%84%E4%BE%9D%E8%B5%96">Mall项目官方博客</a> </p>
@@ -1204,15 +1093,15 @@ docker push new-repo:tagname<span aria-hidden="true" class="line-numbers-rows"><
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="ASCII码表">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">ASCII码表</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            ASCII码表手册
                         
                     </div>
                     <div class="publish-info">
@@ -1221,11 +1110,27 @@ docker push new-repo:tagname<span aria-hidden="true" class="line-numbers-rows"><
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            rudy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/algorithm/">
+                        <span class="chip bg-color">algorithm</span>
+                    </a>
+                    
                 </div>
                 
             </div>

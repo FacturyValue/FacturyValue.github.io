@@ -8,7 +8,7 @@
     <meta name="description" content="Nginx学习笔记
 Nginx简介
 
-Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器，邮件服务器。支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等功能。并且支持很多第三方的模块扩展。">
+1Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器，邮件服务器。支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等功能。并且支持很多第三方的模块扩展">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -563,6 +563,9 @@ Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器�
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -571,7 +574,7 @@ Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器�
                 <h1 id="Nginx学习笔记"><a href="#Nginx学习笔记" class="headerlink" title="Nginx学习笔记"></a>Nginx学习笔记</h1><ul>
 <li>Nginx简介</li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器，邮件服务器。支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等功能。并且支持很多第三方的模块扩展。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器，邮件服务器。支持FastCGI、SSL、Virtual</span> <span class="string">Host、URL</span> <span class="string">Rewrite、Gzip等功能。并且支持很多第三方的模块扩展。</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>Nginx常用功能<ul>
@@ -587,33 +590,7 @@ Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器�
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">...</span>              <span class="token comment">#全局块</span>
-
-events <span class="token punctuation">{</span>         <span class="token comment">#events块</span>
-   <span class="token punctuation">...</span>
-<span class="token punctuation">}</span>
-
-http      <span class="token comment">#http块</span>
-<span class="token punctuation">{</span>
-    <span class="token punctuation">...</span>   <span class="token comment">#http全局块</span>
-    server        <span class="token comment">#server块</span>
-    <span class="token punctuation">{</span> 
-        <span class="token punctuation">...</span>       <span class="token comment">#server全局块</span>
-        location <span class="token punctuation">[</span>PATTERN<span class="token punctuation">]</span>   <span class="token comment">#location块</span>
-        <span class="token punctuation">{</span>
-            <span class="token punctuation">...</span>
-        <span class="token punctuation">}</span>
-        location <span class="token punctuation">[</span>PATTERN<span class="token punctuation">]</span> 
-        <span class="token punctuation">{</span>
-            <span class="token punctuation">...</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    server
-    <span class="token punctuation">{</span>
-      <span class="token punctuation">...</span>
-    <span class="token punctuation">}</span>
-    <span class="token punctuation">...</span>     <span class="token comment">#http全局块</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">...</span>              <span class="comment">#全局块</span></span><br><span class="line"></span><br><span class="line"><span class="string">events</span> {         <span class="comment">#events块</span></span><br><span class="line">   <span class="string">...</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="string">http</span>      <span class="comment">#http块</span></span><br><span class="line">{</span><br><span class="line">    <span class="string">...</span>   <span class="comment">#http全局块</span></span><br><span class="line">    <span class="string">server</span>        <span class="comment">#server块</span></span><br><span class="line">    { </span><br><span class="line">        <span class="string">...</span>       <span class="comment">#server全局块</span></span><br><span class="line">        <span class="string">location</span> [<span class="string">PATTERN</span>]   <span class="comment">#location块</span></span><br><span class="line">        {</span><br><span class="line">            <span class="string">...</span></span><br><span class="line">        }</span><br><span class="line">        <span class="string">location</span> [<span class="string">PATTERN</span>] </span><br><span class="line">        {</span><br><span class="line">            <span class="string">...</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="string">server</span></span><br><span class="line">    {</span><br><span class="line">      <span class="string">...</span></span><br><span class="line">    }</span><br><span class="line">    <span class="string">...</span>     <span class="comment">#http全局块</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>结构解释<ul>
@@ -641,45 +618,7 @@ http      <span class="token comment">#http块</span>
 </li>
 <li>配置文件解析</li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">########### 每个指令必须有分号结束。#################</span>
-<span class="token comment">#user administrator administrators;  #配置用户或者组，默认为nobody nobody。</span>
-<span class="token comment">#worker_processes 2;  #允许生成的进程数，默认为1</span>
-<span class="token comment">#pid /nginx/pid/nginx.pid;   #指定nginx进程运行文件存放地址</span>
-error_log log/error.log debug;  <span class="token comment">#制定日志路径，级别。这个设置可以放入全局块，http块，server块，级别以此为：debug|info|notice|warn|error|crit|alert|emerg</span>
-events <span class="token punctuation">{</span>
-    accept_mutex on;   <span class="token comment">#设置网路连接序列化，防止惊群现象发生，默认为on</span>
-    multi_accept on;  <span class="token comment">#设置一个进程是否同时接受多个网络连接，默认为off</span>
-    <span class="token comment">#use epoll;      #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport</span>
-    worker_connections  1024;    <span class="token comment">#最大连接数，默认为512</span>
-<span class="token punctuation">}</span>
-http <span class="token punctuation">{</span>
-    include       mime.types;   <span class="token comment">#文件扩展名与文件类型映射表</span>
-    default_type  application/octet<span class="token punctuation">-</span>stream; <span class="token comment">#默认文件类型，默认为text/plain</span>
-    <span class="token comment">#access_log off; #取消服务日志    </span>
-    log_format myFormat '$remote_addr–$remote_user <span class="token punctuation">[</span>$time_local<span class="token punctuation">]</span> $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for'; <span class="token comment">#自定义格式</span>
-    access_log log/access.log myFormat;  <span class="token comment">#combined为日志格式的默认值</span>
-    sendfile on;   <span class="token comment">#允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。</span>
-    sendfile_max_chunk 100k;  <span class="token comment">#每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。</span>
-    keepalive_timeout 65;  <span class="token comment">#连接超时时间，默认为75s，可以在http，server，location块。</span>
-
-    upstream mysvr <span class="token punctuation">{</span>   
-      server 127.0.0.1<span class="token punctuation">:</span>7878;
-      server 192.168.10.121<span class="token punctuation">:</span>3333 backup;  <span class="token comment">#热备</span>
-    <span class="token punctuation">}</span>
-    error_page 404 https<span class="token punctuation">:</span>//www.baidu.com; <span class="token comment">#错误页</span>
-    server <span class="token punctuation">{</span>
-        keepalive_requests 120; <span class="token comment">#单连接请求上限次数。</span>
-        listen       4545;   <span class="token comment">#监听端口</span>
-        server_name  127.0.0.1;   <span class="token comment">#监听地址       </span>
-        location  ~<span class="token important">*^.+$</span> <span class="token punctuation">{</span>       <span class="token comment">#请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。</span>
-           <span class="token comment">#root path;  #根目录</span>
-           <span class="token comment">#index vv.txt;  #设置默认页</span>
-           proxy_pass  http<span class="token punctuation">:</span>//mysvr;  <span class="token comment">#请求转向mysvr 定义的服务器列表</span>
-           deny 127.0.0.1;  <span class="token comment">#拒绝的ip</span>
-           allow 172.18.5.54; <span class="token comment">#允许的ip           </span>
-        <span class="token punctuation">}</span> 
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">########### 每个指令必须有分号结束。#################</span></span><br><span class="line"><span class="comment">#user administrator administrators;  #配置用户或者组，默认为nobody nobody。</span></span><br><span class="line"><span class="comment">#worker_processes 2;  #允许生成的进程数，默认为1</span></span><br><span class="line"><span class="comment">#pid /nginx/pid/nginx.pid;   #指定nginx进程运行文件存放地址</span></span><br><span class="line"><span class="string">error_log</span> <span class="string">log/error.log</span> <span class="string">debug;</span>  <span class="comment">#制定日志路径，级别。这个设置可以放入全局块，http块，server块，级别以此为：debug|info|notice|warn|error|crit|alert|emerg</span></span><br><span class="line"><span class="string">events</span> {</span><br><span class="line">    <span class="string">accept_mutex</span> <span class="string">on;</span>   <span class="comment">#设置网路连接序列化，防止惊群现象发生，默认为on</span></span><br><span class="line">    <span class="string">multi_accept</span> <span class="string">on;</span>  <span class="comment">#设置一个进程是否同时接受多个网络连接，默认为off</span></span><br><span class="line">    <span class="comment">#use epoll;      #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport</span></span><br><span class="line">    <span class="string">worker_connections</span>  <span class="number">1024</span><span class="string">;</span>    <span class="comment">#最大连接数，默认为512</span></span><br><span class="line">}</span><br><span class="line"><span class="string">http</span> {</span><br><span class="line">    <span class="string">include</span>       <span class="string">mime.types;</span>   <span class="comment">#文件扩展名与文件类型映射表</span></span><br><span class="line">    <span class="string">default_type</span>  <span class="string">application/octet-stream;</span> <span class="comment">#默认文件类型，默认为text/plain</span></span><br><span class="line">    <span class="comment">#access_log off; #取消服务日志    </span></span><br><span class="line">    <span class="string">log_format</span> <span class="string">myFormat</span> <span class="string">'$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for'</span><span class="string">;</span> <span class="comment">#自定义格式</span></span><br><span class="line">    <span class="string">access_log</span> <span class="string">log/access.log</span> <span class="string">myFormat;</span>  <span class="comment">#combined为日志格式的默认值</span></span><br><span class="line">    <span class="string">sendfile</span> <span class="string">on;</span>   <span class="comment">#允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。</span></span><br><span class="line">    <span class="string">sendfile_max_chunk</span> <span class="string">100k;</span>  <span class="comment">#每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。</span></span><br><span class="line">    <span class="string">keepalive_timeout</span> <span class="number">65</span><span class="string">;</span>  <span class="comment">#连接超时时间，默认为75s，可以在http，server，location块。</span></span><br><span class="line"></span><br><span class="line">    <span class="string">upstream</span> <span class="string">mysvr</span> {   </span><br><span class="line">      <span class="string">server</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:7878;</span></span><br><span class="line">      <span class="string">server</span> <span class="number">192.168</span><span class="number">.10</span><span class="number">.121</span><span class="string">:3333</span> <span class="string">backup;</span>  <span class="comment">#热备</span></span><br><span class="line">    }</span><br><span class="line">    <span class="string">error_page</span> <span class="number">404</span> <span class="string">https://www.baidu.com;</span> <span class="comment">#错误页</span></span><br><span class="line">    <span class="string">server</span> {</span><br><span class="line">        <span class="string">keepalive_requests</span> <span class="number">120</span><span class="string">;</span> <span class="comment">#单连接请求上限次数。</span></span><br><span class="line">        <span class="string">listen</span>       <span class="number">4545</span><span class="string">;</span>   <span class="comment">#监听端口</span></span><br><span class="line">        <span class="string">server_name</span>  <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">;</span>   <span class="comment">#监听地址       </span></span><br><span class="line">        <span class="string">location</span>  <span class="string">~*^.+$</span> {       <span class="comment">#请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。</span></span><br><span class="line">           <span class="comment">#root path;  #根目录</span></span><br><span class="line">           <span class="comment">#index vv.txt;  #设置默认页</span></span><br><span class="line">           <span class="string">proxy_pass</span>  <span class="string">http://mysvr;</span>  <span class="comment">#请求转向mysvr 定义的服务器列表</span></span><br><span class="line">           <span class="string">deny</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">;</span>  <span class="comment">#拒绝的ip</span></span><br><span class="line">           <span class="string">allow</span> <span class="number">172.18</span><span class="number">.5</span><span class="number">.54</span><span class="string">;</span> <span class="comment">#允许的ip           </span></span><br><span class="line">        } </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>Nginx几个常用基本配置</p>
@@ -702,12 +641,7 @@ http <span class="token punctuation">{</span>
 <li><p>Nginx常用命令</p>
 </li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 启动nginx</span>
-start nginx
-<span class="token comment"># 停止nginx</span>
-nginx -s stop
-<span class="token comment"># 重新加载nginx</span>
-nginx -s reload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动nginx</span></span><br><span class="line">start nginx</span><br><span class="line"><span class="comment"># 停止nginx</span></span><br><span class="line">nginx -s stop</span><br><span class="line"><span class="comment"># 重新加载nginx</span></span><br><span class="line">nginx -s reload</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -954,19 +888,19 @@ nginx -s reload<span aria-hidden="true" class="line-numbers-rows"><span></span><
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/10/algorithm/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0_00/">
+                <a href="/2022/05/10/algorithm/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0_01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="LeetCode刷题笔记_00">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="LeetCode刷题笔记_01">
                         
-                        <span class="card-title">LeetCode刷题笔记_00</span>
+                        <span class="card-title">LeetCode刷题笔记_01</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            LeetCode 4.寻找两个正序数组的中位数
+                            链表的常见用法
                         
                     </div>
                     <div class="publish-info">

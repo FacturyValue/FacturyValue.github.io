@@ -538,7 +538,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    492
+                    479
                 </div>
                 
 
@@ -560,93 +560,38 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Ubuntu安装VScode以及安装GCC"><a href="#Ubuntu安装VScode以及安装GCC" class="headerlink" title="Ubuntu安装VScode以及安装GCC"></a>Ubuntu安装VScode以及安装GCC</h1><h1 id="Installing-GCC-on-Ubuntu-20-04"><a href="#Installing-GCC-on-Ubuntu-20-04" class="headerlink" title="Installing GCC on Ubuntu 20.04"></a>Installing GCC on Ubuntu 20.04</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$sudo</span> <span class="token function">apt-get</span> update
-<span class="token variable">$sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> build-essential
-<span class="token variable">$sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> manpages-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$gcc</span> --version
-    Ubuntu <span class="token number">20.04</span> repositories provide GCC version <span class="token number">9.3</span>.0:
-	gcc <span class="token punctuation">(</span>Ubuntu <span class="token number">9.3</span>.0-10ubuntu2<span class="token punctuation">)</span> <span class="token number">9.3</span>.0
-    Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2019</span> Free Software Foundation, Inc.
-    This is <span class="token function">free</span> software<span class="token punctuation">;</span> see the <span class="token builtin class-name">source</span> <span class="token keyword">for</span> copying conditions.  There is NO
-    warranty<span class="token punctuation">;</span> not even <span class="token keyword">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">$nano hello<span class="token punctuation">.</span>c
-     <span class="token comment">// hello.c</span>
-    <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-
-    <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello, world!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-```	   
-```bash
-$gcc hello<span class="token punctuation">.</span>c <span class="token operator">-</span>o hello
-$<span class="token punctuation">.</span><span class="token operator">/</span>hello
-    The program should print<span class="token operator">:</span>
-	Hello World<span class="token operator">!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="Ubuntu安装VScode以及安装GCC"><a href="#Ubuntu安装VScode以及安装GCC" class="headerlink" title="Ubuntu安装VScode以及安装GCC"></a>Ubuntu安装VScode以及安装GCC</h1><h1 id="Installing-GCC-on-Ubuntu-20-04"><a href="#Installing-GCC-on-Ubuntu-20-04" class="headerlink" title="Installing GCC on Ubuntu 20.04"></a>Installing GCC on Ubuntu 20.04</h1><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> apt-get update</span><br><span class="line"><span class="variable">$sudo</span> apt-get install build-essential</span><br><span class="line"><span class="variable">$sudo</span> apt-get install manpages-dev</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$gcc</span> --version</span><br><span class="line">    Ubuntu 20.04 repositories provide GCC version 9.3.0:</span><br><span class="line">	gcc (Ubuntu 9.3.0-10ubuntu2) 9.3.0</span><br><span class="line">    Copyright (C) 2019 Free Software Foundation, Inc.</span><br><span class="line">    This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions.  There is NO</span><br><span class="line">    warranty; not even <span class="keyword">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$nano hello.c</span><br><span class="line">     <span class="comment">// hello.c</span></span><br><span class="line">    <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> {</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Hello, world!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">```	   </span><br><span class="line">```bash</span><br><span class="line">$gcc hello.c -o hello</span><br><span class="line">$./hello</span><br><span class="line">    The program should print:</span><br><span class="line">	Hello World!</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h1><ul>
 <li>用<code>sudo gedit /etc/apt/sources.list </code>打开，把地址复制进去</li>
 </ul>
 <p>镜像地址加速–阿里云</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
- 
-deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
- 
-deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
- 
-deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
- 
-deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"> </span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"> </span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"> </span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line"> </span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>如何卸载GCC</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> dpkg -l <span class="token operator">|</span> <span class="token function">grep</span> gcc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -l | grep gcc</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>安装gcc报错信息</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rudy@rudy:~/Desktop$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> build-essential
-<span class="token punctuation">[</span>sudo<span class="token punctuation">]</span> password <span class="token keyword">for</span> rudy: 
-Reading package lists<span class="token punctuation">..</span>. Done
-Building dependency tree       
-Reading state information<span class="token punctuation">..</span>. Done
-Some packages could not be installed. This may mean that you have
-requested an impossible situation or <span class="token keyword">if</span> you are using the unstable
-distribution that some required packages have not yet been created
-or been moved out of Incoming.
-The following information may <span class="token builtin class-name">help</span> to resolve the situation:
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">rudy@rudy:~/Desktop$ sudo apt install build-essential</span><br><span class="line">[sudo] password <span class="keyword">for</span> rudy: </span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">Some packages could not be installed. This may mean that you have</span><br><span class="line">requested an impossible situation or <span class="keyword">if</span> you are using the unstable</span><br><span class="line">distribution that some required packages have not yet been created</span><br><span class="line">or been moved out of Incoming.</span><br><span class="line">The following information may <span class="built_in">help</span> to resolve the situation:</span><br><span class="line"></span><br><span class="line">The following packages have unmet dependencies:</span><br><span class="line"> build-essential : Depends: libc6-dev but it is not going to be installed or</span><br><span class="line">                            libc-dev</span><br><span class="line">                   Depends: g++ (&gt;= 4:7.2) but it is not going to be installed</span><br><span class="line">                   Depends: dpkg-dev (&gt;= 1.17.11) but it is not going to be installed</span><br><span class="line">E: Unable to correct problems, you have held broken packages.</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
-The following packages have unmet dependencies:
- build-essential <span class="token builtin class-name">:</span> Depends: libc6-dev but it is not going to be installed or
-                            libc-dev
-                   Depends: g++ <span class="token punctuation">(</span><span class="token operator">&gt;=</span> <span class="token number">4</span>:7.2<span class="token punctuation">)</span> but it is not going to be installed
-                   Depends: dpkg-dev <span class="token punctuation">(</span><span class="token operator">&gt;=</span> <span class="token number">1.17</span>.11<span class="token punctuation">)</span> but it is not going to be installed
-E: Unable to correct problems, you have held broken packages.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">###### Ubuntu Main Repos</span>
-deb http://us.archive.ubuntu.com/ubuntu/ wily main
-deb-src http://us.archive.ubuntu.com/ubuntu/ wily main
-
-<span class="token comment">###### Ubuntu Update Repos</span>
-deb http://us.archive.ubuntu.com/ubuntu/ wily-security main
-deb http://us.archive.ubuntu.com/ubuntu/ wily-updates main
-deb-src http://us.archive.ubuntu.com/ubuntu/ wily-security main
-deb-src http://us.archive.ubuntu.com/ubuntu/ wily-updates main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###### Ubuntu Main Repos</span></span><br><span class="line">deb http://us.archive.ubuntu.com/ubuntu/ wily main</span><br><span class="line">deb-src http://us.archive.ubuntu.com/ubuntu/ wily main</span><br><span class="line"></span><br><span class="line"><span class="comment">###### Ubuntu Update Repos</span></span><br><span class="line">deb http://us.archive.ubuntu.com/ubuntu/ wily-security main</span><br><span class="line">deb http://us.archive.ubuntu.com/ubuntu/ wily-updates main</span><br><span class="line">deb-src http://us.archive.ubuntu.com/ubuntu/ wily-security main</span><br><span class="line">deb-src http://us.archive.ubuntu.com/ubuntu/ wily-updates main</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>处理gcc安装报错信息</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$sudo</span> gedit /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> gedit /etc/apt/sources.list</span><br></pre></td></tr></tbody></table></figure>
                 
             </div>
             <hr/>

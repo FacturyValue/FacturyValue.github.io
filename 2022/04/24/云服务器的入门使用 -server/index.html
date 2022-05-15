@@ -564,6 +564,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -583,29 +586,28 @@
 </ul>
 </li>
 <li><p>公网IP</p>
-<pre class="line-numbers language-none"><code class="language-none">youIP<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">youIP</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="https://rudy-1259746058.cos.ap-shanghai.myqcloud.com/file/2022/image/article/%E9%98%BF%E9%87%8C%E4%BA%91ECS.png" alt=" image "></p>
 </li>
 <li><p>密码</p>
-<pre class="line-numbers language-none"><code class="language-none">pwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>域名</p>
-<pre class="line-numbers language-none"><code class="language-none">javacoldly.xyz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javacoldly.xyz</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>SSL证书申请    </p>
 <ul>
 <li>todo..    </li>
 </ul>
 </li>
 <li><p>API 密钥</p>
-<pre class="line-numbers language-none"><code class="language-none">SecretId:&nbsp;Xxx
-SecretKey:Xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SecretId:&nbsp;Xxx</span><br><span class="line">SecretKey:Xxx</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h2></li>
 <li><p>账号密码</p>
 <ul>
-<li>公网IP<pre class="line-numbers language-none"><code class="language-none">120.79.150.12<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>公网IP<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">120.79.150.12</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 <li><p> 密码</p>
-<pre class="line-numbers language-none"><code class="language-none">pwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>个人建站环境搭建</p>
 <ul>
 <li>防火墙</li>
@@ -673,11 +675,11 @@ SecretKey:Xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <li><p>Mysql配置</p>
 <ul>
 <li>获取初始密码</li>
-<li><code>grep 'temporary password' /var/log/mysqld.log</code><pre class="line-numbers language-none"><code class="language-none">2022-04-22T07:12:28.723970Z 1 [Note] A temporary password is generated for root@localhost: tN/TN0rfV+0c<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><code>grep 'temporary password' /var/log/mysqld.log</code><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2022-04-22T07:12:28.723970Z 1 [Note] A temporary password is generated for root@localhost: tN/TN0rfV+0c</span><br></pre></td></tr></tbody></table></figure></li>
 <li>配置Mysql安全</li>
 <li>mysql_secure_installation</li>
 <li>输入初始密码    <code>tN/TN0rfV+0c</code></li>
-<li>配置新密码<pre class="line-numbers language-none"><code class="language-none">#输入新密码。长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号。特殊符号包含()` ~!@#$%^&amp;*-+=|{}[]:;‘&lt;&gt;,.?<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li>配置新密码<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#输入新密码。长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号。特殊符号包含()` ~!@#$%^&amp;*-+=|{}[]:;‘&lt;&gt;,.?</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p><code> mysql</code>新密码：<code>FrsEKF,m9a$dn2N</code></p>
 <ul>
@@ -718,22 +720,21 @@ SecretKey:Xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 </ul>
 </li>
 <li><code>其他nginx版本安装 如1.18.1 参考文档 阿里云LNMP环境搭建</code><ul>
-<li><code>[root@iZwz9c743j35koyx2hety8Z mysql]# php -v</code><pre class="line-numbers language-none"><code class="language-none">PHP 7.0.33 (cli) (built: Dec  6 2018 22:30:44) ( NTS ) Copyright (c) 1997-2017 The PHP Group Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies with Zend OPcache v7.0.33, Copyright (c) 1999-2017, by Zend Technologies<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><code>[root@iZwz9c743j35koyx2hety8Z mysql]# php -v</code><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP 7.0.33 (cli) (built: Dec  6 2018 22:30:44) ( NTS ) Copyright (c) 1997-2017 The PHP Group Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies with Zend OPcache v7.0.33, Copyright (c) 1999-2017, by Zend Technologies</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>查看LNMP配置信息</p>
 <ul>
-<li><code>[root@iZwz9c743j35koyx2hety8Z mysql]# mysql -V</code><pre class="line-numbers language-none"><code class="language-none">mysql  Ver 14.14 Distrib 5.7.37, for Linux (x86_64) using  EditLine wrapper<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><code>[root@iZwz9c743j35koyx2hety8Z mysql]# mysql -V</code><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql  Ver 14.14 Distrib 5.7.37, for Linux (x86_64) using  EditLine wrapper</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 <li><p><code>[root@iZwz9c743j35koyx2hety8Z mysql]# nginx -v</code></p>
-<pre class="line-numbers language-none"><code class="language-none">nginx version: nginx/1.20.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx version: nginx/1.20.1</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="阿里云安装Mysql报错"><a href="#阿里云安装Mysql报错" class="headerlink" title="阿里云安装Mysql报错"></a>阿里云安装Mysql报错</h4></li>
 <li><p>报错信息</p>
-<pre class="line-numbers language-Failing" data-language="Failing"><div class="caption"><span>package is: mysql-community-server-5.7.37-1.el7.x86_64</span></div><code class="language-Failing"> GPG Keys are configured as: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-源 “MySQL 5.7 Community Server” 的 GPG&nbsp;密钥已安装，但是不适用于此软件包。请检查源的公钥 URL 是否配置正确<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><figcaption><span>package is: mysql-community-server-5.7.37-1.el7.x86_64</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> GPG Keys are configured as: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line">源 “MySQL 5.7 Community Server” 的 GPG&nbsp;密钥已安装，但是不适用于此软件包。请检查源的公钥 URL 是否配置正确</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>解决方法</p>
 <ul>
 <li><code>[root@iZwz9c743j35koyx2hety8Z mysql]# rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022</code></li>
@@ -744,28 +745,7 @@ SecretKey:Xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <li><p><code>由于mysql5.7密码强度太高</code></p>
 <ul>
 <li>修改mysql密码</li>
-<li><code>mysql&gt; show variables like "%password%";    </code><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">+----------------------------------------+-----------------+
-| Variable_name                          | Value           |
-+----------------------------------------+-----------------+
-| default_password_lifetime              | 0               |
-| disconnect_on_expired_password         | ON              |
-| log_builtin_as_identified_by_password  | OFF             |
-| mysql_native_password_proxy_users      | OFF             |
-| old_passwords                          | 0               |
-| report_password                        |                 |
-| sha256_password_auto_generate_rsa_keys | ON              |
-| sha256_password_private_key_path       | private_key.pem |
-| sha256_password_proxy_users            | OFF             |
-| sha256_password_public_key_path        | public_key.pem  |
-| validate_password_check_user_name      | OFF             |
-| validate_password_dictionary_file      |                 |
-| validate_password_length               | 8               |
-| validate_password_mixed_case_count     | 1               |
-| validate_password_number_count         | 1               |
-| validate_password_policy               | MEDIUM          |
-| validate_password_special_char_count   | 1               |
-+----------------------------------------+-----------------+
-17 rows in set (0.00 sec)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><code>mysql&gt; show variables like "%password%";    </code><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">+----------------------------------------+-----------------+</span><br><span class="line">| Variable_name                          | Value           |</span><br><span class="line">+----------------------------------------+-----------------+</span><br><span class="line">| default_password_lifetime              | 0               |</span><br><span class="line">| disconnect_on_expired_password         | ON              |</span><br><span class="line">| log_builtin_as_identified_by_password  | OFF             |</span><br><span class="line">| mysql_native_password_proxy_users      | OFF             |</span><br><span class="line">| old_passwords                          | 0               |</span><br><span class="line">| report_password                        |                 |</span><br><span class="line">| sha256_password_auto_generate_rsa_keys | ON              |</span><br><span class="line">| sha256_password_private_key_path       | private_key.pem |</span><br><span class="line">| sha256_password_proxy_users            | OFF             |</span><br><span class="line">| sha256_password_public_key_path        | public_key.pem  |</span><br><span class="line">| validate_password_check_user_name      | OFF             |</span><br><span class="line">| validate_password_dictionary_file      |                 |</span><br><span class="line">| validate_password_length               | 8               |</span><br><span class="line">| validate_password_mixed_case_count     | 1               |</span><br><span class="line">| validate_password_number_count         | 1               |</span><br><span class="line">| validate_password_policy               | MEDIUM          |</span><br><span class="line">| validate_password_special_char_count   | 1               |</span><br><span class="line">+----------------------------------------+-----------------+</span><br><span class="line">17 rows in set (0.00 sec)</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 <li><p>mysql创建新用户方便记忆</p>
@@ -788,11 +768,11 @@ SecretKey:Xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <li><p>根据提示一步步安装</p>
 <ul>
 <li>wordpress 自注册</li>
-<li>用户名<pre class="line-numbers language-none"><code class="language-none">rudy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>用户名<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rudy</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 <li><p>密码</p>
-<pre class="line-numbers language-none"><code class="language-none">lPa^PEfXqY1L92C3aR<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lPa^PEfXqY1L92C3aR</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>域名替换<code>公网IP</code>优化访问安全</p>
 <h5 id="除了搭建LNMP-LAMP环境外-还可以搭建FTP服务器-Gitlab服务等"><a href="#除了搭建LNMP-LAMP环境外-还可以搭建FTP服务器-Gitlab服务等" class="headerlink" title="除了搭建LNMP/LAMP环境外 还可以搭建FTP服务器,Gitlab服务等"></a>除了搭建LNMP/LAMP环境外 还可以搭建FTP服务器,Gitlab服务等</h5><h3 id="搭建Gitlab示例"><a href="#搭建Gitlab示例" class="headerlink" title="搭建Gitlab示例"></a>搭建<code>Gitlab</code>示例</h3></li>
 <li><p>前提条件</p>
@@ -883,27 +863,9 @@ SecretKey:Xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 </ul>
 </li>
 <li><p> <code>MySQL</code>安装报错</p>
-<pre class="line-numbers language-none"><code class="language-none">- warning: /var/cache/yum/x86_64/7/mysql57-community/packages/mysql-community-common-5.7.37-1.el7.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID 3a79bd29: NOKEY
-- Public key for mysql-community-common-5.7.37-1.el7.x86_64.rpm is not installed
-- (1/4): mysql-community-common-5.7.37-1.el7.x86_64.rpm                                                                                                                 | 311 kB  00:00:00     
-- (2/4): mysql-community-libs-5.7.37-1.el7.x86_64.rpm                                                                                                                   | 2.4 MB  00:00:00     
-- (3/4): mysql-community-client-5.7.37-1.el7.x86_64.rpm                                                                                                                 |  25 MB  00:00:01     
-- (4/4): mysql-community-server-5.7.37-1.el7.x86_64.rpm                                                                                                                 | 174 MB  00:00:06     
-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-- Total                                                                                                                                                         27 MB/s | 202 MB  00:00:07     
-- Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-- Importing GPG key 0x5072E1F5:
--  Userid     : "MySQL Release Engineering &lt;mysql-build@oss.oracle.com&gt;"
--  Fingerprint: a4a9 4068 76fc bd3c 4567 70c8 8c71 8d3b 5072 e1f5
--  Package    : mysql57-community-release-el7-9.noarch (installed)
--  From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-- 
-- 
-- Public key for mysql-community-server-5.7.37-1.el7.x86_64.rpm is not installed
-- <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- warning: /var/cache/yum/x86_64/7/mysql57-community/packages/mysql-community-common-5.7.37-1.el7.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID 3a79bd29: NOKEY</span><br><span class="line">- Public key for mysql-community-common-5.7.37-1.el7.x86_64.rpm is not installed</span><br><span class="line">- (1/4): mysql-community-common-5.7.37-1.el7.x86_64.rpm                                                                                                                 | 311 kB  00:00:00     </span><br><span class="line">- (2/4): mysql-community-libs-5.7.37-1.el7.x86_64.rpm                                                                                                                   | 2.4 MB  00:00:00     </span><br><span class="line">- (3/4): mysql-community-client-5.7.37-1.el7.x86_64.rpm                                                                                                                 |  25 MB  00:00:01     </span><br><span class="line">- (4/4): mysql-community-server-5.7.37-1.el7.x86_64.rpm                                                                                                                 | 174 MB  00:00:06     </span><br><span class="line">- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">- Total                                                                                                                                                         27 MB/s | 202 MB  00:00:07     </span><br><span class="line">- Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line">- Importing GPG key 0x5072E1F5:</span><br><span class="line">-  Userid     : "MySQL Release Engineering &lt;mysql-build@oss.oracle.com&gt;"</span><br><span class="line">-  Fingerprint: a4a9 4068 76fc bd3c 4567 70c8 8c71 8d3b 5072 e1f5</span><br><span class="line">-  Package    : mysql57-community-release-el7-9.noarch (installed)</span><br><span class="line">-  From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line">- </span><br><span class="line">- </span><br><span class="line">- Public key for mysql-community-server-5.7.37-1.el7.x86_64.rpm is not installed</span><br><span class="line">- </span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>报错分析</p>
-<pre class="line-numbers language-none"><code class="language-none">-  Failing package is: mysql-community-server-5.7.37-1.el7.x86_64
--  GPG Keys are configured as: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-  Failing package is: mysql-community-server-5.7.37-1.el7.x86_64</span><br><span class="line">-  GPG Keys are configured as: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>报错原因：需安装<code>GPG</code>密钥</p>
 <ul>
 <li>执行如下命令     </li>
