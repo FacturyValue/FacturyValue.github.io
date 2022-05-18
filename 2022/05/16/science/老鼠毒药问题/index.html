@@ -1,0 +1,1884 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="奇妙的二进制, rudy&#39;s blog">
+    <meta name="description" content="老鼠毒药问题，太极八卦与二进制的渊源">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>奇妙的二进制 | rudy&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">rudy&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-project-diagram"" style="zoom: 0.6;"></i>
+      
+      <span>项目</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/FacturyValue/spring4.0">
+          
+          <span>spring4.0</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/FacturyValue/rudy-orm">
+          
+          <span>rudy-orm</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/FacturyValue/SpringStack">
+          
+          <span>SpringStack</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">rudy&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Welcome to my world,Guys.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-project-diagram""></i>
+			
+			项目
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/FacturyValue/spring4.0 " style="margin-left:75px">
+				  
+		          <span>spring4.0</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/FacturyValue/rudy-orm " style="margin-left:75px">
+				  
+		          <span>rudy-orm</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/FacturyValue/SpringStack " style="margin-left:75px">
+				  
+		          <span>SpringStack</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/FacturyValue" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/FacturyValue" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">奇妙的二进制</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/binary/">
+                                <span class="chip bg-color">binary</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%85%AB%E5%8D%A6/">
+                                <span class="chip bg-color">八卦</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%A7%91%E6%99%AE%E6%96%87%E7%AB%A0/" class="post-category">
+                                科普文章
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-05-16
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-05-18
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    935
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    3 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="奇妙的二进制"><a href="#奇妙的二进制" class="headerlink" title="奇妙的二进制"></a>奇妙的二进制</h1><h1 id="老鼠毒药问题"><a href="#老鼠毒药问题" class="headerlink" title="老鼠毒药问题"></a>老鼠毒药问题</h1><blockquote>
+<p>有100瓶液体,其中99瓶是水,一瓶是毒药。老鼠喝完毒药,不会立刻死亡,一周以后才会死亡。</p>
+<p>给你一周的时间,你最多需要多少只老鼠才能试出拿一瓶液体是毒药？</p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ul>
+<li>将1，2，3，4….100瓶液体进行编号，先把所有数字转换成二进制数再依次编号</li>
+<li>二进制数从右往左保留七位，这样就构成如下排列</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>液体数字编号</th>
+<th>二</th>
+<th>进</th>
+<th>制</th>
+<th>数</th>
+<th>字</th>
+<th>编</th>
+<th>号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+</tr>
+<tr>
+<td>99</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>100</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>老鼠编号</td>
+<td>1号老鼠</td>
+<td>2号</td>
+<td>3号</td>
+<td>4号</td>
+<td>5号</td>
+<td>6号</td>
+<td>7号</td>
+</tr>
+</tbody></table>
+<ul>
+<li>将七只老鼠分别放在每一列的列号下，每只老鼠只喝老鼠所在列的液体。</li>
+<li>等待一周后看每一列老鼠死亡情况即可得出结果</li>
+</ul>
+<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><ul>
+<li>当1,3,5死亡,说明1号老鼠所喝列中必有一瓶液体为毒药,同理3，5号老鼠所在列都有一瓶液体为毒药</li>
+<li>推出毒药液体瓶的编号为 <code>1010100</code><del>(2)</del> 转换成十进制结果为:  84.</li>
+</ul>
+<h1 id="进制转换问题"><a href="#进制转换问题" class="headerlink" title="进制转换问题"></a>进制转换问题</h1><ul>
+<li>十进制如何转换成二进制<ul>
+<li>将数字除以<code>2</code>，或者 <code>&gt;&gt;&gt;1</code></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>十进制数字</th>
+<th>除以2后得到的商</th>
+<th>余数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>17</td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>将得到的余数==从底向上==排列得到最终的二进制结果为：<code>10001</code><del>(2)</del></p>
+</li>
+<li><p>二进制转换成十进制</p>
+<ul>
+<li>以 <code>1011</code><del>(2)</del>为例</li>
+<li><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="45.546ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 20131.4 915.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(529,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(1129,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(1875.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mn" transform="translate(2931.6,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(3653.8,0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g><g data-mml-node="msup" transform="translate(4376,0)"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mn" transform="translate(533,363) scale(0.707)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g></g><g data-mml-node="mo" transform="translate(5534.8,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(6535,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(7257.2,0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g><g data-mml-node="msup" transform="translate(7979.4,0)"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mn" transform="translate(533,363) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g><g data-mml-node="mo" transform="translate(9138.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(10138.4,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(10860.7,0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g><g data-mml-node="msup" transform="translate(11582.9,0)"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mn" transform="translate(533,363) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g><g data-mml-node="mo" transform="translate(12797.2,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mn" transform="translate(13853,0)"><path data-c="38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path></g><g data-mml-node="mo" transform="translate(14575.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(15575.4,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mo" transform="translate(16297.7,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(17297.9,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(18075.7,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mn" transform="translate(19131.4,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" transform="translate(500,0)"></path></g></g></g></svg></mjx-container></li>
+</ul>
+</li>
+</ul>
+<h1 id="二进制的来源"><a href="#二进制的来源" class="headerlink" title="二进制的来源"></a>二进制的来源</h1><ul>
+<li>莱布尼茨(微积分创始人-和牛顿还在争夺)</li>
+</ul>
+<h2 id="中国的八卦与二进制"><a href="#中国的八卦与二进制" class="headerlink" title="中国的八卦与二进制"></a>中国的八卦与二进制</h2><ul>
+<li>符号编码</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>Unicode</th>
+<th>JIS X 0213</th>
+<th>HTML</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>⚊</td>
+<td><code>U+268A</code></td>
+<td></td>
+<td><code>⚊</code> <code>⚊</code></td>
+<td>MONOGRAM FOR YANG</td>
+</tr>
+<tr>
+<td>⚋</td>
+<td><code>U+268B</code></td>
+<td></td>
+<td><code>⚋</code> <code>⚋</code></td>
+<td>MONOGRAM FOR YIN</td>
+</tr>
+</tbody></table>
+<ul>
+<li>八卦</li>
+</ul>
+<p><img src="/upload/2022/05/bagua.png" alt="bagua"></p>
+<ul>
+<li>八卦与二进制</li>
+</ul>
+<table>
+   <tbody><tr><td></td><td>☷</td><td>☶</td><td>☵</td><td>☴</td><td>☳</td><td>☲</td><td>☱</td><td>☰</td></tr>
+   <tr><td>八卦</td><td>坤</td><td>艮(gen)</td><td>坎</td><td>巽(xun)</td><td>震</td><td>離</td><td>兌</td><td>乾</td></tr>
+   <tr><td>四象</td><td>太阴</td><td></td><td>少阳</td><td></td><td>少阴</td><td></td><td>太阳</td><td></td></tr>
+   <tr><td>兩儀</td><td>陰</td><td></td><td></td><td></td><td>阳</td><td></td><td></td><td></td></tr>
+   <tr><td>太極</td><td>太极</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>二进制</td><td>000</td><td>001</td><td>010</td><td>011</td><td>100</td><td>101</td><td>110</td><td>111</td></tr>
+    <tr><td>十进制</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+</tbody></table> 
+
+
+<ul>
+<li>六十四卦</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>伏羲先天</strong></th>
+<th><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6#%E4%BC%8F%E7%BE%B2%E5%85%88%E5%A4%A9%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6">六十四卦</a><strong>排列方位圖表</strong></th>
+<th>〈方圓四分四層圖〉</th>
+<th>—</th>
+<th>—</th>
+<th>—</th>
+<th>—</th>
+<th>—</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-mo/File:Trigramme2637_%E2%98%B7.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Trigramme2637_%E2%98%B7.svg/30px-Trigramme2637_%E2%98%B7.svg.png" alt="Trigramme2637 ☷.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%9D%A4">坤</a>（地）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2636_%E2%98%B6.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Trigramme2636_%E2%98%B6.svg/30px-Trigramme2636_%E2%98%B6.svg.png" alt="Trigramme2636 ☶.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%89%AE">艮</a>（山）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2635_%E2%98%B5.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Trigramme2635_%E2%98%B5.svg/30px-Trigramme2635_%E2%98%B5.svg.png" alt="Trigramme2635 ☵.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%9D%8E">坎</a>（水）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2634_%E2%98%B4.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Trigramme2634_%E2%98%B4.svg/30px-Trigramme2634_%E2%98%B4.svg.png" alt="Trigramme2634 ☴.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B7%BD">巽</a>（風）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2633_%E2%98%B3.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Trigramme2633_%E2%98%B3.svg/30px-Trigramme2633_%E2%98%B3.svg.png" alt="Trigramme2633 ☳.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9C%87">震</a>（雷）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2632_%E2%98%B2.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Trigramme2632_%E2%98%B2.svg/30px-Trigramme2632_%E2%98%B2.svg.png" alt="Trigramme2632 ☲.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9B%A2">離</a>（火）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2631_%E2%98%B1.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Trigramme2631_%E2%98%B1.svg/30px-Trigramme2631_%E2%98%B1.svg.png" alt="Trigramme2631 ☱.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%85%8C">兌</a>（澤）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2630_%E2%98%B0.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Trigramme2630_%E2%98%B0.svg/30px-Trigramme2630_%E2%98%B0.svg.png" alt="Trigramme2630 ☰.svg"></a><br><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E4%B9%BE">乾</a>（天）</strong></td>
+<td>← 上卦<br>↓ 下卦</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-02.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Iching-hexagram-02.svg/40px-Iching-hexagram-02.svg.png" alt="Iching-hexagram-02.svg"></a> (1)2. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%9D%A4">坤</a>為地</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-23.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Iching-hexagram-23.svg/40px-Iching-hexagram-23.svg.png" alt="Iching-hexagram-23.svg"></a> (2)23. 山地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%89%9D">剝</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-08.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Iching-hexagram-08.svg/40px-Iching-hexagram-08.svg.png" alt="Iching-hexagram-08.svg"></a> (3)8. 水地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%AF%94">比</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-20.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Iching-hexagram-20.svg/40px-Iching-hexagram-20.svg.png" alt="Iching-hexagram-20.svg"></a> (4)20. 風地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%A7%80">觀</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-16.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Iching-hexagram-16.svg/40px-Iching-hexagram-16.svg.png" alt="Iching-hexagram-16.svg"></a> (5)16. 雷地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%B1%AB">豫</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-35.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Iching-hexagram-35.svg/40px-Iching-hexagram-35.svg.png" alt="Iching-hexagram-35.svg"></a> (6)35. 火地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%99%89">晉</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-45.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Iching-hexagram-45.svg/40px-Iching-hexagram-45.svg.png" alt="Iching-hexagram-45.svg"></a> (7)45. 澤地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%90%83">萃</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-12.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Iching-hexagram-12.svg/40px-Iching-hexagram-12.svg.png" alt="Iching-hexagram-12.svg"></a> (8)12. 天地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%90%A6">否</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2637_%E2%98%B7.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Trigramme2637_%E2%98%B7.svg/30px-Trigramme2637_%E2%98%B7.svg.png" alt="Trigramme2637 ☷.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%9D%A4">坤</a>（地）</strong></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-15.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Iching-hexagram-15.svg/40px-Iching-hexagram-15.svg.png" alt="Iching-hexagram-15.svg"></a> (9)15. 地山<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%AC%99">謙</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-52.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Iching-hexagram-52.svg/40px-Iching-hexagram-52.svg.png" alt="Iching-hexagram-52.svg"></a> (10)52. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%89%AE">艮</a>為山</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-39.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Iching-hexagram-39.svg/40px-Iching-hexagram-39.svg.png" alt="Iching-hexagram-39.svg"></a> (11)39. 水山<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%B9%87">蹇</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-53.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Iching-hexagram-53.svg/40px-Iching-hexagram-53.svg.png" alt="Iching-hexagram-53.svg"></a> (12)53. 風山<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%BC%B8">漸</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-62.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Iching-hexagram-62.svg/40px-Iching-hexagram-62.svg.png" alt="Iching-hexagram-62.svg"></a> (13)62. 雷山<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B0%8F%E9%81%8E">小過</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-56.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Iching-hexagram-56.svg/40px-Iching-hexagram-56.svg.png" alt="Iching-hexagram-56.svg"></a> (14)56. 火山<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%97%85">旅</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-31.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Iching-hexagram-31.svg/40px-Iching-hexagram-31.svg.png" alt="Iching-hexagram-31.svg"></a> (15)31. 澤山<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%92%B8">咸</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-33.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Iching-hexagram-33.svg/40px-Iching-hexagram-33.svg.png" alt="Iching-hexagram-33.svg"></a> (16)33. 天山<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%81%AF">遯</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2636_%E2%98%B6.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Trigramme2636_%E2%98%B6.svg/30px-Trigramme2636_%E2%98%B6.svg.png" alt="Trigramme2636 ☶.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%89%AE">艮</a>（山）</strong></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-07.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Iching-hexagram-07.svg/40px-Iching-hexagram-07.svg.png" alt="Iching-hexagram-07.svg"></a> (17)7. 地水<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B8%AB">師</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-04.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Iching-hexagram-04.svg/40px-Iching-hexagram-04.svg.png" alt="Iching-hexagram-04.svg"></a> (18)4. 山水<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%92%99">蒙</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-29.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Iching-hexagram-29.svg/40px-Iching-hexagram-29.svg.png" alt="Iching-hexagram-29.svg"></a> (19)29. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%9D%8E">坎</a>為水</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-59.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Iching-hexagram-59.svg/40px-Iching-hexagram-59.svg.png" alt="Iching-hexagram-59.svg"></a> (20)59. 風水<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%B8%99">渙</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-40.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Iching-hexagram-40.svg/40px-Iching-hexagram-40.svg.png" alt="Iching-hexagram-40.svg"></a> (21)40. 雷水<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%A7%A3">解</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-64.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Iching-hexagram-64.svg/40px-Iching-hexagram-64.svg.png" alt="Iching-hexagram-64.svg"></a> (22)64. 火水<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%9C%AA%E6%BF%9F">未濟</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-47.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Iching-hexagram-47.svg/40px-Iching-hexagram-47.svg.png" alt="Iching-hexagram-47.svg"></a> (23)47. 澤水<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%9B%B0">困</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-06.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Iching-hexagram-06.svg/40px-Iching-hexagram-06.svg.png" alt="Iching-hexagram-06.svg"></a> (24)6. 天水<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%A8%9F">訟</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2635_%E2%98%B5.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Trigramme2635_%E2%98%B5.svg/30px-Trigramme2635_%E2%98%B5.svg.png" alt="Trigramme2635 ☵.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%9D%8E">坎</a>（水）</strong></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-46.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Iching-hexagram-46.svg/40px-Iching-hexagram-46.svg.png" alt="Iching-hexagram-46.svg"></a> (25)46. 地風<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%8D%87">升</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-18.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Iching-hexagram-18.svg/40px-Iching-hexagram-18.svg.png" alt="Iching-hexagram-18.svg"></a> (26)18. 山風<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%A0%B1">蠱</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-48.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Iching-hexagram-48.svg/40px-Iching-hexagram-48.svg.png" alt="Iching-hexagram-48.svg"></a> (27)48. 水風<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E4%BA%95">井</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-57.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Iching-hexagram-57.svg/40px-Iching-hexagram-57.svg.png" alt="Iching-hexagram-57.svg"></a> (28)57. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B7%BD">巽</a>為風</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-32.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Iching-hexagram-32.svg/40px-Iching-hexagram-32.svg.png" alt="Iching-hexagram-32.svg"></a> (29)32. 雷風<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%81%86">恆</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-50.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Iching-hexagram-50.svg/40px-Iching-hexagram-50.svg.png" alt="Iching-hexagram-50.svg"></a> (30)50. 火風<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%BC%8E">鼎</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-28.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Iching-hexagram-28.svg/40px-Iching-hexagram-28.svg.png" alt="Iching-hexagram-28.svg"></a> (31)28. 澤風<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%A4%A7%E9%81%8E">大過</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-44.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Iching-hexagram-44.svg/40px-Iching-hexagram-44.svg.png" alt="Iching-hexagram-44.svg"></a> (32)44. 天風<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%A7%A4">姤</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2634_%E2%98%B4.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Trigramme2634_%E2%98%B4.svg/30px-Trigramme2634_%E2%98%B4.svg.png" alt="Trigramme2634 ☴.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B7%BD">巽</a>（風）</strong></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-24.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Iching-hexagram-24.svg/40px-Iching-hexagram-24.svg.png" alt="Iching-hexagram-24.svg"></a> (33)24. 地雷<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%BE%A9">復</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-27.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Iching-hexagram-27.svg/40px-Iching-hexagram-27.svg.png" alt="Iching-hexagram-27.svg"></a> (34)27. 山雷<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%A0%A4">頤</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-03.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Iching-hexagram-03.svg/40px-Iching-hexagram-03.svg.png" alt="Iching-hexagram-03.svg"></a> (35)3. 水雷<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B1%AF">屯</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-42.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Iching-hexagram-42.svg/40px-Iching-hexagram-42.svg.png" alt="Iching-hexagram-42.svg"></a> (36)42. 風雷<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E7%9B%8A">益</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-51.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Iching-hexagram-51.svg/40px-Iching-hexagram-51.svg.png" alt="Iching-hexagram-51.svg"></a> (37)51. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9C%87">震</a>為雷</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-21.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Iching-hexagram-21.svg/40px-Iching-hexagram-21.svg.png" alt="Iching-hexagram-21.svg"></a> (38)21. 火雷<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%99%AC%E5%97%91">噬嗑</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-17.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Iching-hexagram-17.svg/40px-Iching-hexagram-17.svg.png" alt="Iching-hexagram-17.svg"></a> (39)17. 澤雷<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9A%A8">隨</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-25.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Iching-hexagram-25.svg/40px-Iching-hexagram-25.svg.png" alt="Iching-hexagram-25.svg"></a> (40)25. 天雷<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%97%A0%E5%A6%84">無妄</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2633_%E2%98%B3.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Trigramme2633_%E2%98%B3.svg/30px-Trigramme2633_%E2%98%B3.svg.png" alt="Trigramme2633 ☳.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9C%87">震</a>（雷）</strong></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-36.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Iching-hexagram-36.svg/40px-Iching-hexagram-36.svg.png" alt="Iching-hexagram-36.svg"></a> (41)36. 地火<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%98%8E%E5%A4%B7">明夷</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-22.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Iching-hexagram-22.svg/40px-Iching-hexagram-22.svg.png" alt="Iching-hexagram-22.svg"></a> (42)22. 山火<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%B3%81">賁</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-63.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Iching-hexagram-63.svg/40px-Iching-hexagram-63.svg.png" alt="Iching-hexagram-63.svg"></a> (43)63. 水火<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%97%A2%E6%BF%9F">既濟</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-37.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Iching-hexagram-37.svg/40px-Iching-hexagram-37.svg.png" alt="Iching-hexagram-37.svg"></a> (44)37. 風火<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%AE%B6%E4%BA%BA">家人</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-55.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Iching-hexagram-55.svg/40px-Iching-hexagram-55.svg.png" alt="Iching-hexagram-55.svg"></a> (45)55. 雷火<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%B1%90">豐</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-30.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Iching-hexagram-30.svg/40px-Iching-hexagram-30.svg.png" alt="Iching-hexagram-30.svg"></a> (46)30. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9B%A2">離</a>為火</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-49.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Iching-hexagram-49.svg/40px-Iching-hexagram-49.svg.png" alt="Iching-hexagram-49.svg"></a> (47)49. 澤火<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9D%A9">革</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-13.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Iching-hexagram-13.svg/40px-Iching-hexagram-13.svg.png" alt="Iching-hexagram-13.svg"></a> (48)13. 天火<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%90%8C%E4%BA%BA">同人</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2632_%E2%98%B2.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Trigramme2632_%E2%98%B2.svg/30px-Trigramme2632_%E2%98%B2.svg.png" alt="Trigramme2632 ☲.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9B%A2">離</a>（火）</strong></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-19.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Iching-hexagram-19.svg/40px-Iching-hexagram-19.svg.png" alt="Iching-hexagram-19.svg"></a> (49)19. 地澤<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E8%87%A8">臨</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-41.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Iching-hexagram-41.svg/40px-Iching-hexagram-41.svg.png" alt="Iching-hexagram-41.svg"></a> (50)41. 山澤<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%90%8D">損</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-60.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Iching-hexagram-60.svg/40px-Iching-hexagram-60.svg.png" alt="Iching-hexagram-60.svg"></a> (51)60. 水澤<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E7%AF%80">節</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-61.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Iching-hexagram-61.svg/40px-Iching-hexagram-61.svg.png" alt="Iching-hexagram-61.svg"></a> (52)61. 風澤<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E4%B8%AD%E5%AD%9A">中孚</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-54.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Iching-hexagram-54.svg/40px-Iching-hexagram-54.svg.png" alt="Iching-hexagram-54.svg"></a> (53)54. 雷澤<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%AD%B8%E5%A6%B9">歸妹</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-38.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Iching-hexagram-38.svg/40px-Iching-hexagram-38.svg.png" alt="Iching-hexagram-38.svg"></a> (54)38. 火澤<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E7%9D%BD">睽</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-58.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Iching-hexagram-58.svg/40px-Iching-hexagram-58.svg.png" alt="Iching-hexagram-58.svg"></a> (55)58. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%85%8C">兌</a>為澤</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-10.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Iching-hexagram-10.svg/40px-Iching-hexagram-10.svg.png" alt="Iching-hexagram-10.svg"></a> (56)10. 天澤<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B1%A5">履</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2631_%E2%98%B1.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Trigramme2631_%E2%98%B1.svg/30px-Trigramme2631_%E2%98%B1.svg.png" alt="Trigramme2631 ☱.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%85%8C">兌</a>（澤）</strong></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-11.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Iching-hexagram-11.svg/40px-Iching-hexagram-11.svg.png" alt="Iching-hexagram-11.svg"></a> (57)11. 地天<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E6%B3%B0">泰</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-26.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Iching-hexagram-26.svg/40px-Iching-hexagram-26.svg.png" alt="Iching-hexagram-26.svg"></a> (58)26. 山天<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%A4%A7%E7%95%9C">大畜</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-05.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Iching-hexagram-05.svg/40px-Iching-hexagram-05.svg.png" alt="Iching-hexagram-05.svg"></a> (59)5. 水天<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E9%9C%80">需</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-09.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Iching-hexagram-09.svg/40px-Iching-hexagram-09.svg.png" alt="Iching-hexagram-09.svg"></a> (60)9. 風天<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%B0%8F%E7%95%9C">小畜</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-34.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Iching-hexagram-34.svg/40px-Iching-hexagram-34.svg.png" alt="Iching-hexagram-34.svg"></a> (61)34. 雷天<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%A4%A7%E5%A3%AF">大壯</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-14.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Iching-hexagram-14.svg/40px-Iching-hexagram-14.svg.png" alt="Iching-hexagram-14.svg"></a> (62)14. 火天<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%A4%A7%E6%9C%89">大有</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-43.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Iching-hexagram-43.svg/40px-Iching-hexagram-43.svg.png" alt="Iching-hexagram-43.svg"></a> (63)43. 澤天<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E5%A4%AC">夬</a></td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Iching-hexagram-01.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Iching-hexagram-01.svg/40px-Iching-hexagram-01.svg.png" alt="Iching-hexagram-01.svg"></a> (64)1. <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E4%B9%BE">乾</a>為天</td>
+<td><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/File:Trigramme2630_%E2%98%B0.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Trigramme2630_%E2%98%B0.svg/30px-Trigramme2630_%E2%98%B0.svg.png" alt="Trigramme2630 ☰.svg"></a><strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%A8%E6%98%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6%E5%88%97%E8%A1%A8#%E4%B9%BE">乾</a>（天）</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">rudy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://FacturyValue.github.io/2022/05/16/science/%E8%80%81%E9%BC%A0%E6%AF%92%E8%8D%AF%E9%97%AE%E9%A2%98/">https://FacturyValue.github.io/2022/05/16/science/%E8%80%81%E9%BC%A0%E6%AF%92%E8%8D%AF%E9%97%AE%E9%A2%98/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">rudy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/binary/">
+                                    <span class="chip bg-color">binary</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%85%AB%E5%8D%A6/">
+                                    <span class="chip bg-color">八卦</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,douban" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/05/17/science/MarkDown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="markdown中数学公式语法">
+                        
+                        <span class="card-title">markdown中数学公式语法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            markdown中数学公式语法
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="post-category">
+                                    工具类
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/MarkDown/">
+                        <span class="chip bg-color">MarkDown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/15/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97%E4%B9%8B%E5%9B%BE%E7%9A%84%E5%BA%94%E7%94%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="数据结构系列之图的应用">
+                        
+                        <span class="card-title">数据结构系列之图的应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            数据结构-图
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AF%87/" class="post-category">
+                                    算法篇
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/algorithm/">
+                        <span class="chip bg-color">algorithm</span>
+                    </a>
+                    
+                    <a href="/tags/datastructure/">
+                        <span class="chip bg-color">datastructure</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="song"
+                   id="25706282"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">rudy</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">57.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "4";
+                        var startDate = "28";
+                        var startHour = "11";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+                <span id="icp"><img src="/medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">沪ICP备2022012868号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/FacturyValue" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1150915116@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1150915116" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1150915116" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+
+    <a href="https://juejin.cn/user/3298190615656206" class="tooltipped" target="_blank" data-tooltip="关注我的掘金: https://juejin.cn/user/3298190615656206" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">掘</i>
+    </a>
+
+
+
+    <a href="https://www.jianshu.com/u/c8a0c696888c" class="tooltipped" target="_blank" data-tooltip="关注我的简书: https://www.jianshu.com/u/c8a0c696888c" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">简</i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
